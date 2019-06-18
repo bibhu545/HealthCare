@@ -65,17 +65,19 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AddDoctor.aspx" />
-    <Content Include="AddDocument.aspx" />
-    <Content Include="AddDocumentType.aspx" />
-    <Content Include="AddHospital.aspx" />
-    <Content Include="ChangePassword.aspx" />
+    <Content Include="Doctors\AddDoctor.aspx" />
+    <Content Include="Doctors\ViewDoctor.aspx" />
+    <Content Include="Hospital\AddHospital.aspx" />
+    <Content Include="Hospital\ViewHospitals.aspx" />
+    <Content Include="Profile\ChangePassword.aspx" />
+    <Content Include="Profile\EditProfile.aspx" />
+    <Content Include="Profile\UserHome.aspx" />
+    <Content Include="Profile\ViewProfile.aspx" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\Style.css" />
-    <Content Include="EditProfile.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Home.aspx" />
     <Content Include="files\profiles\default-profile.png" />
@@ -99,7 +101,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Default.Master" />
+    <Content Include="Hospital\Hospital.Master" />
+    <Content Include="Profile\ProfileMaster.Master" />
+    <Content Include="Doctors\Doctor.Master" />
+    <Content Include="Vault\AddDocument.aspx" />
+    <Content Include="Vault\AddDocumentType.aspx" />
+    <Content Include="Vault\Vault.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,63 +117,80 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Register.aspx" />
-    <Content Include="UserHome.aspx" />
-    <Content Include="ViewDoctors.aspx" />
-    <Content Include="ViewDocuments.aspx" />
-    <Content Include="ViewDocumentTypes.aspx" />
-    <Content Include="ViewHospitals.aspx" />
-    <Content Include="ViewProfile.aspx" />
+    <Content Include="Vault\ViewDocuments.aspx" />
+    <Content Include="Vault\ViewDocumentTypes.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddDoctor.aspx.cs">
+    <Compile Include="Doctors\AddDoctor.aspx.cs">
       <DependentUpon>AddDoctor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AddDoctor.aspx.designer.cs">
+    <Compile Include="Doctors\AddDoctor.aspx.designer.cs">
       <DependentUpon>AddDoctor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AddDocument.aspx.cs">
-      <DependentUpon>AddDocument.aspx</DependentUpon>
+    <Compile Include="Doctors\Doctor.Master.cs">
+      <DependentUpon>Doctor.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AddDocument.aspx.designer.cs">
-      <DependentUpon>AddDocument.aspx</DependentUpon>
+    <Compile Include="Doctors\Doctor.Master.designer.cs">
+      <DependentUpon>Doctor.Master</DependentUpon>
     </Compile>
-    <Compile Include="AddDocumentType.aspx.cs">
-      <DependentUpon>AddDocumentType.aspx</DependentUpon>
+    <Compile Include="Doctors\ViewDoctor.aspx.cs">
+      <DependentUpon>ViewDoctor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AddDocumentType.aspx.designer.cs">
-      <DependentUpon>AddDocumentType.aspx</DependentUpon>
+    <Compile Include="Doctors\ViewDoctor.aspx.designer.cs">
+      <DependentUpon>ViewDoctor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AddHospital.aspx.cs">
+    <Compile Include="Hospital\AddHospital.aspx.cs">
       <DependentUpon>AddHospital.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AddHospital.aspx.designer.cs">
+    <Compile Include="Hospital\AddHospital.aspx.designer.cs">
       <DependentUpon>AddHospital.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ChangePassword.aspx.cs">
+    <Compile Include="Hospital\ViewHospitals.aspx.cs">
+      <DependentUpon>ViewHospitals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Hospital\ViewHospitals.aspx.designer.cs">
+      <DependentUpon>ViewHospitals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ChangePassword.aspx.designer.cs">
+    <Compile Include="Profile\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.Master.cs">
-      <DependentUpon>Default.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.Master.designer.cs">
-      <DependentUpon>Default.Master</DependentUpon>
-    </Compile>
-    <Compile Include="EditProfile.aspx.cs">
+    <Compile Include="Profile\EditProfile.aspx.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EditProfile.aspx.designer.cs">
+    <Compile Include="Profile\EditProfile.aspx.designer.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\ProfileMaster.Master.cs">
+      <DependentUpon>ProfileMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile\ProfileMaster.Master.designer.cs">
+      <DependentUpon>ProfileMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\UserHome.aspx.cs">
+      <DependentUpon>UserHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile\UserHome.aspx.designer.cs">
+      <DependentUpon>UserHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\ViewProfile.aspx.cs">
+      <DependentUpon>ViewProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile\ViewProfile.aspx.designer.cs">
+      <DependentUpon>ViewProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -177,6 +201,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Hospital\Hospital.Master.cs">
+      <DependentUpon>Hospital.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Hospital\Hospital.Master.designer.cs">
+      <DependentUpon>Hospital.Master</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -193,47 +224,40 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserHome.aspx.cs">
-      <DependentUpon>UserHome.aspx</DependentUpon>
+    <Compile Include="Vault\AddDocument.aspx.cs">
+      <DependentUpon>AddDocument.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserHome.aspx.designer.cs">
-      <DependentUpon>UserHome.aspx</DependentUpon>
+    <Compile Include="Vault\AddDocument.aspx.designer.cs">
+      <DependentUpon>AddDocument.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewDoctors.aspx.cs">
-      <DependentUpon>ViewDoctors.aspx</DependentUpon>
+    <Compile Include="Vault\AddDocumentType.aspx.cs">
+      <DependentUpon>AddDocumentType.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewDoctors.aspx.designer.cs">
-      <DependentUpon>ViewDoctors.aspx</DependentUpon>
+    <Compile Include="Vault\AddDocumentType.aspx.designer.cs">
+      <DependentUpon>AddDocumentType.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewDocuments.aspx.cs">
+    <Compile Include="Vault\Vault.Master.cs">
+      <DependentUpon>Vault.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vault\Vault.Master.designer.cs">
+      <DependentUpon>Vault.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Vault\ViewDocuments.aspx.cs">
       <DependentUpon>ViewDocuments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewDocuments.aspx.designer.cs">
+    <Compile Include="Vault\ViewDocuments.aspx.designer.cs">
       <DependentUpon>ViewDocuments.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewDocumentTypes.aspx.cs">
+    <Compile Include="Vault\ViewDocumentTypes.aspx.cs">
       <DependentUpon>ViewDocumentTypes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewDocumentTypes.aspx.designer.cs">
+    <Compile Include="Vault\ViewDocumentTypes.aspx.designer.cs">
       <DependentUpon>ViewDocumentTypes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ViewHospitals.aspx.cs">
-      <DependentUpon>ViewHospitals.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ViewHospitals.aspx.designer.cs">
-      <DependentUpon>ViewHospitals.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ViewProfile.aspx.cs">
-      <DependentUpon>ViewProfile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ViewProfile.aspx.designer.cs">
-      <DependentUpon>ViewProfile.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
