@@ -1,0 +1,70 @@
+﻿/* start Home styling */
+
+.home-body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/operation.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Acme', sans-serif;
+}
+
+.register-body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/doctor-tools.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Acme', sans-serif;
+}
+
+.home {
+    height: 100vh;
+    margin: auto;
+}
+
+.overlay {
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -5;
+    background: rgba(0, 0, 0, 0.8);
+}
+.login-page-overlay {
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -5;
+    background: rgba(0, 0, 0, 0.2);
+}
+.form-overlay {
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 3%;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+.home-content {
+    padding-top: 15%;
+    color: white;
+    margin: auto;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.home-content h2 {
+    font-family: 'Lobster Two', cursive;
+    text-shadow: 0 0 15px #FF0000;
+}
+
+.control-label {
+    text-align: right;
+}
