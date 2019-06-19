@@ -24,6 +24,25 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <div class="form-overlay">
+
+                            <% if (Request.QueryString["successMessage"] != null){ %>
+
+                                <div class="alert alert-success alert-dismissible fade in">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>Success!</strong> <% Response.Write(Request.QueryString["successMessage"]); %>
+                                </div>
+
+                            <%} %>
+
+                            <% if (Request.QueryString["errorMessage"] != null){ %>
+
+                                <div class="alert alert-danger alert-dismissible fade in">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>Error! </strong> <% Response.Write(Request.QueryString["errorMessage"]); %>
+                                </div>
+
+                            <%} %>
+
                         <center>
                                 <h2>Register and start discovering Healthcare</h2>
                             </center>
@@ -34,7 +53,7 @@
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <asp:TextBox ID="txtFirstName" type="text" class="form-control" placeholder="Enter First Name" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtFirstName" type="text" class="form-control" required="required" placeholder="Enter First Name" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +64,7 @@
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <asp:TextBox ID="txtLastName" type="text" class="form-control" placeholder="Enter Last Name" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtLastName" type="text" class="form-control" required="required" placeholder="Enter Last Name" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +75,7 @@
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                    <asp:TextBox ID="txtEmail" type="email" class="form-control" placeholder="Enter Email" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmail" type="email" class="form-control" required="required" placeholder="Enter Email" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +86,7 @@
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <asp:TextBox ID="txtPassword" type="password" class="form-control" placeholder="Enter Password" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtPassword" type="password" class="form-control" required="required" placeholder="Enter Password" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -78,14 +97,14 @@
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <asp:TextBox ID="txtConfirmPassword" type="password" class="form-control" placeholder="ReEnter Password" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtConfirmPassword" type="password" class="form-control" required="required" placeholder="ReEnter Password" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
                         <br />
                         <br />
                         <center>
-                                <asp:Button ID="btnRegister" class="btn btn-success" runat="server" Text="Register Now"></asp:Button> 
+                                <asp:Button ID="btnRegister" class="btn btn-success" runat="server" Text="Register Now" OnClick="btnRegister_Click"></asp:Button> 
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="Login.aspx" class="btn btn-primary btn-login">Login now</a>
                         </center>

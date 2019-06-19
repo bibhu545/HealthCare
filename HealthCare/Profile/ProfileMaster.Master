@@ -21,7 +21,7 @@
 
         .content-pane {
             padding-top: 13%;
-            min-height: 90vh;
+            min-height: 80vh;
         }
 
         .img-circle {
@@ -72,7 +72,7 @@
                         </ul>
                     </li>
                     <li><a href="ChangePassword.aspx">Change Password</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="../Logout.aspx">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -87,8 +87,8 @@
                 <div class="col-md-3 side-pane">
                     <div class="profile-image">
                         <center>
-                            <img src="../files/profiles/default-profile.png" alt="Profile Picture" class="img-responsive img-circle" height="80" width="80" />
-                            <h3>Hello user</h3>
+                            <img src="<% Response.Write(user.Profile); %>" alt="Profile Picture" class="img-responsive img-circle" />
+                            <h3>Hello <% Response.Write(user.FirstName); %></h3>
                             <br />
                             <div class="list-group">
                                 <a href="UserHome.aspx" class="list-group-item">Home</a>

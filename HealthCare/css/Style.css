@@ -76,3 +76,12 @@
 a{
     text-decoration: none;
 }
+
+.alert {
+    margin: 0% 4% 0% 4%;
+}
+
+.img-circle{
+    height: 120px;
+    width: 100px;
+}

@@ -32,3 +32,9 @@ D:\VisualStudio17\HealthCare\HealthCare\bin\Microsoft.CodeDom.Providers.DotNetCo
 D:\VisualStudio17\HealthCare\HealthCare\obj\Debug\HealthCare.csprojResolveAssemblyReference.cache
 D:\VisualStudio17\HealthCare\HealthCare\obj\Debug\HealthCare.dll
 D:\VisualStudio17\HealthCare\HealthCare\obj\Debug\HealthCare.pdb
+D:\VisualStudio17\HealthCare\HealthCare\bin\BusinessLayer.dll
+D:\VisualStudio17\HealthCare\HealthCare\bin\DataModels.dll
+D:\VisualStudio17\HealthCare\HealthCare\bin\DataAccess.dll
+D:\VisualStudio17\HealthCare\HealthCare\bin\BusinessLayer.pdb
+D:\VisualStudio17\HealthCare\HealthCare\bin\DataModels.pdb
+D:\VisualStudio17\HealthCare\HealthCare\bin\DataAccess.pdb

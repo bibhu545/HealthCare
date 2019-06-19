@@ -70,7 +70,9 @@
     <Content Include="Hospital\AddHospital.aspx" />
     <Content Include="Hospital\ViewHospitals.aspx" />
     <Content Include="Profile\ChangePassword.aspx" />
+    <Content Include="Profile\ConfirmRegistration.aspx" />
     <Content Include="Profile\EditProfile.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="Profile\UserHome.aspx" />
     <Content Include="Profile\ViewProfile.aspx" />
     <Content Include="css\bootstrap-theme.css" />
@@ -164,12 +166,26 @@
     <Compile Include="Profile\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Profile\ConfirmRegistration.aspx.cs">
+      <DependentUpon>ConfirmRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile\ConfirmRegistration.aspx.designer.cs">
+      <DependentUpon>ConfirmRegistration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Profile\EditProfile.aspx.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Profile\EditProfile.aspx.designer.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profile\ProfileMaster.Master.cs">
       <DependentUpon>ProfileMaster.Master</DependentUpon>
@@ -263,6 +279,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{0b8f812c-8fe3-4072-ba88-097374527e3b}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataModels\DataModels.csproj">
+      <Project>{9c3a22a5-6b0b-4509-ab51-7397e5193721}</Project>
+      <Name>DataModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

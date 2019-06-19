@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BusinessLayer;
+using DataModels;
 
 namespace HealthCare
 {
@@ -12,6 +14,20 @@ namespace HealthCare
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            User user = new BusinessClass().Login(txtEmail.Text.Trim(), txtPassword.Text.Trim());
+            if(user.status == 1)
+            {
+                Session["loggedUser"] = user;
+                Response.Redirect("Profile/UserHome.aspx");
+            }
+            else
+            {
+                Response.Redirect("Login.aspx?errorMessage=Some Error occured. Please try again.");
+            }
         }
     }
 }

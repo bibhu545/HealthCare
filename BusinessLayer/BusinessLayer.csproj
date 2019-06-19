@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{441CD1A3-BD9F-40DE-AAE9-26C413935742}</ProjectGuid>
+    <ProjectGuid>{0B8F812C-8FE3-4072-BA88-097374527E3B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BusinessLayer</RootNamespace>
@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,16 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BusinessClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
-      <Project>{011434f8-9d6e-4ad0-8624-028213e95821}</Project>
-      <Name>DataAccessLayer</Name>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{8719d061-c004-4aff-9201-3700ea478f61}</Project>
+      <Name>DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataModels\DataModels.csproj">
-      <Project>{8f49398e-0f2f-42c3-a728-49049b8a697b}</Project>
+      <Project>{9c3a22a5-6b0b-4509-ab51-7397e5193721}</Project>
       <Name>DataModels</Name>
     </ProjectReference>
   </ItemGroup>

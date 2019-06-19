@@ -71,7 +71,7 @@
                         </ul>
                     </li>
                     <li><a href="../Profile/ChangePassword.aspx">Change Password</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="../Logout.aspx">Logout</a></li>
                 </ul>
             </div>
         </div>
