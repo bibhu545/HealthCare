@@ -1,0 +1,7 @@
+D:\VisualStudio17\HealthCare\DataAccess\bin\Release\DataAccess.dll
+D:\VisualStudio17\HealthCare\DataAccess\bin\Release\DataAccess.pdb
+D:\VisualStudio17\HealthCare\DataAccess\bin\Release\DataModels.dll
+D:\VisualStudio17\HealthCare\DataAccess\bin\Release\DataModels.pdb
+D:\VisualStudio17\HealthCare\DataAccess\obj\Release\DataAccess.csprojResolveAssemblyReference.cache
+D:\VisualStudio17\HealthCare\DataAccess\obj\Release\DataAccess.dll
+D:\VisualStudio17\HealthCare\DataAccess\obj\Release\DataAccess.pdb

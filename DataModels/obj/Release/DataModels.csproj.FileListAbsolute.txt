@@ -1,0 +1,5 @@
+D:\VisualStudio17\HealthCare\DataModels\bin\Release\DataModels.dll
+D:\VisualStudio17\HealthCare\DataModels\bin\Release\DataModels.pdb
+D:\VisualStudio17\HealthCare\DataModels\obj\Release\DataModels.csprojResolveAssemblyReference.cache
+D:\VisualStudio17\HealthCare\DataModels\obj\Release\DataModels.dll
+D:\VisualStudio17\HealthCare\DataModels\obj\Release\DataModels.pdb

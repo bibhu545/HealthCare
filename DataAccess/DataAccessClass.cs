@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using DataModels;
@@ -11,7 +12,7 @@ namespace DataAccess
 {
     public class DataAccessClass
     {
-        String connectionString = "Server=localhost;Initial Catalog=assignment;Integrated Security=True";
+        String connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         SqlConnection conn = null;
         public int SaveUserToDB(User user)
         {
@@ -139,6 +140,73 @@ namespace DataAccess
                 }
             }
             return user;
+        }
+        public int AddHospitalToDB(Hospital hospital)
+        {
+            int added = -1;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand scmd = new SqlCommand("AddHospital", conn);
+                scmd.CommandType = CommandType.StoredProcedure;
+                scmd.Parameters.AddWithValue("@userid", hospital.UserId);
+                scmd.Parameters.AddWithValue("@hospitalname", hospital.HospitalName);
+                scmd.Parameters.AddWithValue("@address", hospital.Address);
+                scmd.Parameters.AddWithValue("@phone1", hospital.Phone1);
+                scmd.Parameters.AddWithValue("@phone2", hospital.Phone2);
+                scmd.Parameters.AddWithValue("@email", hospital.Email);
+                scmd.Parameters.AddWithValue("@isprimary", hospital.IsPrimary);
+                added = scmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return added;
+        }
+        public DataTable GetHospitalsFromDB()
+        {
+            DataTable dt = null;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand scmd = new SqlCommand("select * from hospitals order by isprimary desc", conn);
+                SqlDataAdapter sda = new SqlDataAdapter(scmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return dt;
+        }
+        public int DeleteHospitalFromDB(int hospitalid)
+        {
+            int deleted = -1;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand scmd = new SqlCommand("DELETE FROM hospitals WHERE hospitalid = "+hospitalid, conn);
+                deleted = scmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return deleted;
         }
     }
 }

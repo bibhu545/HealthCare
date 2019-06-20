@@ -7,6 +7,7 @@ using System.Net.Mail;
 using System.Net;
 using DataAccess;
 using DataModels;
+using System.Data;
 
 namespace BusinessLayer
 {
@@ -48,6 +49,19 @@ namespace BusinessLayer
         public User updatePassword(User user)
         {
             return new DataAccessClass().UpdatePasswordToDB(user);
+        }
+
+        public int AddHospital(Hospital hospital)
+        {
+            return new DataAccessClass().AddHospitalToDB(hospital);
+        }
+        public DataTable GetHospitals()
+        {
+            return new DataAccessClass().GetHospitalsFromDB();
+        }
+        public int DeleteHospital(int hospitalid)
+        {
+            return new DataAccessClass().DeleteHospitalFromDB(hospitalid);
         }
     }
 }
