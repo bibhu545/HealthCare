@@ -66,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Doctors\AddDoctor.aspx" />
+    <Content Include="Doctors\DeleteDoctor.aspx" />
+    <Content Include="Doctors\DoctorDetails.aspx" />
+    <Content Include="Doctors\EditDoctor.aspx" />
     <Content Include="Doctors\ViewDoctors.aspx" />
     <Content Include="Hospitals\AddHospital.aspx" />
     <Content Include="Hospitals\DeleteHospital.aspx" />
@@ -132,6 +135,27 @@
     </Compile>
     <Compile Include="Doctors\AddDoctor.aspx.designer.cs">
       <DependentUpon>AddDoctor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Doctors\DeleteDoctor.aspx.cs">
+      <DependentUpon>DeleteDoctor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctors\DeleteDoctor.aspx.designer.cs">
+      <DependentUpon>DeleteDoctor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Doctors\DoctorDetails.aspx.cs">
+      <DependentUpon>DoctorDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctors\DoctorDetails.aspx.designer.cs">
+      <DependentUpon>DoctorDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Doctors\EditDoctor.aspx.cs">
+      <DependentUpon>EditDoctor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctors\EditDoctor.aspx.designer.cs">
+      <DependentUpon>EditDoctor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Doctors\ViewDoctors.aspx.cs">
       <DependentUpon>ViewDoctors.aspx</DependentUpon>

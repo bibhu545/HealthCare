@@ -10,7 +10,7 @@
 namespace HealthCare.Doctors {
     
     
-    public partial class AddDoctor {
+    public partial class EditDoctor {
         
         /// <summary>
         /// txtFirstName control.
@@ -31,24 +31,6 @@ namespace HealthCare.Doctors {
         protected global::System.Web.UI.WebControls.TextBox txtLastName;
         
         /// <summary>
-        /// ddlHospitals control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlHospitals;
-        
-        /// <summary>
-        /// ddlSpecialities control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSpecialities;
-        
-        /// <summary>
         /// txtAddress control.
         /// </summary>
         /// <remarks>
@@ -58,22 +40,22 @@ namespace HealthCare.Doctors {
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
         
         /// <summary>
-        /// txtContact control.
+        /// txtContactNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContact;
+        protected global::System.Web.UI.WebControls.TextBox txtContactNumber;
         
         /// <summary>
-        /// txtAlternativeContact control.
+        /// txtAlternativeNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAlternativeContact;
+        protected global::System.Web.UI.WebControls.TextBox txtAlternativeNumber;
         
         /// <summary>
         /// txtEmail control.
@@ -94,12 +76,12 @@ namespace HealthCare.Doctors {
         protected global::System.Web.UI.WebControls.CheckBox chkSetPrimary;
         
         /// <summary>
-        /// btnAddDoctor control.
+        /// btnEditDoctor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddDoctor;
+        protected global::System.Web.UI.WebControls.Button btnEditDoctor;
     }
 }

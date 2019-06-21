@@ -1,9 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="EditHospital.aspx.cs" Inherits="HealthCare.Hospitals.EditHospital" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="DoctorDetails.aspx.cs" Inherits="HealthCare.Doctors.DoctorDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .primary-hospital{
+            color: darkgreen;
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContent" runat="server">
+
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -27,47 +33,55 @@
                 <%} %>
 
             <center>
-                <h3>Edit Hospital Details</h3>
+                <h3>Hospital Details</h3>
+                <% if (Convert.ToInt32(dt.Rows[0]["isprimary"]) == 1){ %>
+                <span class="primary-hospital"><h4>Primary Doctor</h4></span>
+                <%} %>
             </center>
             <br />
 
             <div class="table-responsive">
                 <table class="table table-hover">
                     <tr>
+                        <th>First Name: </th>
+                        <td><% Response.Write(dt.Rows[0]["firstname"]); %></td>
+                    </tr>
+                    <tr>
+                        <th>Last Name: </th>
+                        <td><% Response.Write(dt.Rows[0]["lastname"]); %></td>
+                    </tr>
+                    <tr>
                         <th>Hospital Name: </th>
-                        <td>
-                            <asp:TextBox ID="txtHospitalName" class="form-control" runat="server" required="required"></asp:TextBox>
-                        </td>
+                        <td><% Response.Write(dt.Rows[0]["hospitalname"]); %></td>
+                    </tr>
+                    <tr>
+                        <th>Speciality: </th>
+                        <td><% Response.Write(dt.Rows[0]["speciality"]); %></td>
                     </tr>
                     <tr>
                         <th>Address: </th>
-                        <td><asp:TextBox ID="txtAddress" class="form-control" runat="server" required="required"></asp:TextBox></td>
+                        <td><% Response.Write(dt.Rows[0]["address"]); %></td>
                     </tr>
                     <tr>
                         <th>Contact Number: </th>
-                        <td><asp:TextBox ID="txtContactNumber" class="form-control" runat="server" required="required"></asp:TextBox></td>
+                        <td><% Response.Write(dt.Rows[0]["phone1"]); %></td>
                     </tr>
                     <tr>
                         <th>Alternative Number: </th>
-                        <td><asp:TextBox ID="txtAlternativeNumber" class="form-control" runat="server"></asp:TextBox></td>
+                        <td><% Response.Write(dt.Rows[0]["phone2"]); %></td>
                     </tr>
                     <tr>
                         <th>Email</th>
-                        <td><asp:TextBox ID="txtEmail" class="form-control" runat="server" required="required"></asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <th colspan="2">
-                            <label class="checkbox-inline"><asp:CheckBox ID="chkSetPrimary" Text="Set Primary" runat="server" /></label>
-                        </th>
+                        <td><% Response.Write(dt.Rows[0]["email"]); %></td>
                     </tr>
                 </table>
                 <center>
-                    <asp:Button ID="btnEditHospital" class="btn btn-primary" runat="server" Text="Update Details" OnClick="btnEditHospital_Click"></asp:Button>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="ViewHospitals.aspx" class="btn btn-default">Cancel</a>
+                    <a href="EditDoctor.aspx?id=<% Response.Write(dt.Rows[0]["doctorid"]); %>" class="btn btn-primary">Edit Details</a>
+                    <a href="ViewDoctors.aspx" class="btn btn-success">View All Doctors</a>
                 </center>
             </div>
         </div>
         <div class="col-md-2"></div>
     </div>
+
 </asp:Content>

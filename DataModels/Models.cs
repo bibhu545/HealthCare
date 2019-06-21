@@ -31,4 +31,19 @@ namespace DataModels
         public String Email { get; set; }
         public int IsPrimary { get; set; }
     }
+    public class Doctor
+    {
+        public int status = -1;
+        public int DoctorId { get; set; }
+        public int UserId { get; set; }
+        public int HospitalId { get; set; }
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
+        public int Speciality { get; set; }
+        public String Address { get; set; }
+        public String Phone1 { get; set; }
+        public String Phone2 { get; set; }
+        public String Email { get; set; }
+        public int IsPrimary { get; set; }
+    }
 }

@@ -59,9 +59,37 @@ namespace BusinessLayer
         {
             return new DataAccessClass().GetHospitalsFromDB();
         }
+        public DataTable GetSpecialities()
+        {
+            return new DataAccessClass().GetSpecialitiesFromDB();
+        }
+        public DataTable GetDoctors()
+        {
+            return new DataAccessClass().GetDoctorsFromDB();
+        }
         public int DeleteHospital(int hospitalid)
         {
             return new DataAccessClass().DeleteHospitalFromDB(hospitalid);
+        }
+        public int DeleteDoctor(int doctorid)
+        {
+            return new DataAccessClass().DeleteDoctorFromDB(doctorid);
+        }
+        public Hospital GetHospitalDetails(int id)
+        {
+            return new DataAccessClass().GetHospitalDetailsFromDB(id);
+        }
+        public DataTable GetDoctorDetails(int id)
+        {
+            return new DataAccessClass().GetDoctorDetailsFromDB(id);
+        }
+        public Hospital EditHospitalDetails(Hospital hospital)
+        {
+            return new DataAccessClass().UpdateHospitalToDB(hospital);
+        }
+        public Doctor AddDoctor(Doctor doctor)
+        {
+            return new DataAccessClass().AddDoctorToDB(doctor);
         }
     }
 }

@@ -189,6 +189,27 @@ namespace DataAccess
             }
             return dt;
         }
+        public DataTable GetSpecialitiesFromDB()
+        {
+            DataTable dt = null;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand scmd = new SqlCommand("select * from speciality", conn);
+                SqlDataAdapter sda = new SqlDataAdapter(scmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return dt;
+        }
         public int DeleteHospitalFromDB(int hospitalid)
         {
             int deleted = -1;
@@ -207,6 +228,166 @@ namespace DataAccess
                 }
             }
             return deleted;
+        }
+        public Hospital GetHospitalDetailsFromDB(int id)
+        {
+            Hospital hospital = new Hospital();
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand scmd = new SqlCommand("select * from hospitals Where hospitalid = "+id, conn);
+                SqlDataAdapter sda = new SqlDataAdapter(scmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                int records = dt.Rows.Count;
+                if (records > 0)
+                {
+                    hospital.status = 1;
+                    hospital.HospitalId = Convert.ToInt32(dt.Rows[0]["hospitalid"].ToString());
+                    hospital.UserId = Convert.ToInt32(dt.Rows[0]["userid"].ToString());
+                    hospital.HospitalName = dt.Rows[0]["hospitalname"].ToString();
+                    hospital.Address = dt.Rows[0]["address"].ToString();
+                    hospital.Phone1 = dt.Rows[0]["phone1"].ToString();
+                    hospital.Phone2 = dt.Rows[0]["phone2"].ToString();
+                    hospital.Email = dt.Rows[0]["email"].ToString();
+                    hospital.IsPrimary = Convert.ToInt32(dt.Rows[0]["isprimary"].ToString());
+                }
+                else
+                {
+                    hospital.status = -1;
+                }
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return hospital;
+        }
+        public Hospital UpdateHospitalToDB(Hospital hospital)
+        {
+            hospital.status = -1;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand scmd = new SqlCommand("UpdateHospital", conn);
+                scmd.CommandType = CommandType.StoredProcedure;
+                scmd.Parameters.AddWithValue("@hospitalid", hospital.HospitalId);
+                scmd.Parameters.AddWithValue("@userid", hospital.UserId);
+                scmd.Parameters.AddWithValue("@hospitalname", hospital.HospitalName);
+                scmd.Parameters.AddWithValue("@address", hospital.Address);
+                scmd.Parameters.AddWithValue("@phone1", hospital.Phone1);
+                scmd.Parameters.AddWithValue("@phone2", hospital.Phone2);
+                scmd.Parameters.AddWithValue("@email", hospital.Email);
+                scmd.Parameters.AddWithValue("@isprimary", hospital.IsPrimary);
+                hospital.status = scmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return hospital;
+        }
+        public Doctor AddDoctorToDB(Doctor doctor)
+        {
+            doctor.status = -1;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand scmd = new SqlCommand("CreateDoctors", conn);
+                scmd.CommandType = CommandType.StoredProcedure;
+                scmd.Parameters.AddWithValue("@userid", doctor.UserId);
+                scmd.Parameters.AddWithValue("@hospitalid", doctor.HospitalId);
+                scmd.Parameters.AddWithValue("@firstname", doctor.FirstName);
+                scmd.Parameters.AddWithValue("@lastname", doctor.LastName);
+                scmd.Parameters.AddWithValue("@speciality", doctor.Speciality);
+                scmd.Parameters.AddWithValue("@address", doctor.Address);
+                scmd.Parameters.AddWithValue("@phone1", doctor.Phone1);
+                scmd.Parameters.AddWithValue("@phone2", doctor.Phone2);
+                scmd.Parameters.AddWithValue("@email", doctor.Email);
+                scmd.Parameters.AddWithValue("@isprimary", doctor.IsPrimary);
+                doctor.status = scmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return doctor;
+        }
+        public DataTable GetDoctorsFromDB()
+        {
+            DataTable dt = null;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                String sql = "select doctors.doctorid, doctors.firstname, hospitals.hospitalname, doctors.address, doctors.phone1, doctors.isprimary from doctors inner join hospitals on doctors.hospitalid = hospitals.hospitalid";
+                SqlCommand scmd = new SqlCommand(sql, conn);
+                SqlDataAdapter sda = new SqlDataAdapter(scmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return dt;
+        }
+        public int DeleteDoctorFromDB(int doctorid)
+        {
+            int deleted = -1;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand scmd = new SqlCommand("DELETE FROM doctors WHERE doctorid = " + doctorid, conn);
+                deleted = scmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return deleted;
+        }
+        public DataTable GetDoctorDetailsFromDB(int id)
+        {
+            DataTable dt;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand scmd = new SqlCommand("GetDoctorDetails", conn);
+                scmd.CommandType = CommandType.StoredProcedure;
+                scmd.Parameters.AddWithValue("@doctorid", id);
+                SqlDataAdapter sda = new SqlDataAdapter(scmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return dt;
         }
     }
 }

@@ -4,15 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BusinessLayer;
+using System.Data;
 using DataModels;
+using BusinessLayer;
 
-namespace HealthCare.Hospitals
+namespace HealthCare.Doctors
 {
-    public partial class HospitalDetails : System.Web.UI.Page
+    public partial class DoctorDetails : System.Web.UI.Page
     {
         public User user = null;
-        public Hospital hospital = null;
+        public DataTable dt = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,17 +21,17 @@ namespace HealthCare.Hospitals
                 if (Session["loggedUser"] != null)
                 {
                     user = (User)Session["loggedUser"];
-                    if(Request.QueryString["id"] == null)
+                    if (Request.QueryString["id"] == null)
                     {
-                        Response.Redirect("ViewHospitals.aspx?errorMessage=Please select a Hospital to edit.");
+                        Response.Redirect("ViewDoctors.aspx?errorMessage=Please select a Hospital to edit.");
                     }
                     else
                     {
                         int id = Convert.ToInt32(Request.QueryString["id"]);
-                        hospital = new BusinessClass().GetHospitalDetails(id);
-                        if(hospital.status == -1)
+                        dt = new BusinessClass().GetDoctorDetails(id);
+                        if (dt.Rows.Count <= 0)
                         {
-                            Response.Redirect("ViewHospitals.aspx?errorMessage=Please select a valid Hospital to edit.");
+                            Response.Redirect("ViewDoctors.aspx?errorMessage=Please select a valid Hospital to edit.");
                         }
                     }
                 }

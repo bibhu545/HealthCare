@@ -34,6 +34,28 @@ namespace HealthCare.Hospitals
                 }
             }
         }
+        public String ViewPrimaryHospital(String isPrimary, String name)
+        {
+            int primary = Convert.ToInt32(isPrimary);
+            if(primary == 1)
+            {
+                return name + "<br /> (Primary)";
+            }
+            else
+            {
+                return name;
+            }
+        }
+        private string SortDirection
+        {
+            get { return ViewState["SortDirection"] != null ? ViewState["SortDirection"].ToString() : "ASC"; }
+            set { ViewState["SortDirection"] = value; }
+        }
+        protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvHospitals.PageIndex = e.NewPageIndex;
+            this.BindDataGrid();
+        }
 
         protected void OnSorting(object sender, GridViewSortEventArgs e)
         {

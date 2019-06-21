@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="EditHospital.aspx.cs" Inherits="HealthCare.Hospitals.EditHospital" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="EditDoctor.aspx.cs" Inherits="HealthCare.Doctors.EditDoctor" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -27,16 +27,22 @@
                 <%} %>
 
             <center>
-                <h3>Edit Hospital Details</h3>
+                <h3>Edit Doctor Details</h3>
             </center>
             <br />
 
             <div class="table-responsive">
                 <table class="table table-hover">
                     <tr>
-                        <th>Hospital Name: </th>
+                        <th>First Name: </th>
                         <td>
-                            <asp:TextBox ID="txtHospitalName" class="form-control" runat="server" required="required"></asp:TextBox>
+                            <asp:TextBox ID="txtFirstName" class="form-control" runat="server" required="required"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Last Name: </th>
+                        <td>
+                            <asp:TextBox ID="txtLastName" class="form-control" runat="server" required="required"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -62,9 +68,9 @@
                     </tr>
                 </table>
                 <center>
-                    <asp:Button ID="btnEditHospital" class="btn btn-primary" runat="server" Text="Update Details" OnClick="btnEditHospital_Click"></asp:Button>
+                    <asp:Button ID="btnEditDoctor" class="btn btn-primary" runat="server" Text="Update Details" OnClick="btnEditDoctor_Click"></asp:Button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="ViewHospitals.aspx" class="btn btn-default">Cancel</a>
+                    <a href="ViewDoctors.aspx" class="btn btn-default">Cancel</a>
                 </center>
             </div>
         </div>

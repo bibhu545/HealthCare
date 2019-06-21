@@ -55,7 +55,14 @@ namespace HealthCare.Profile
             user.Email = txtEmail.Text.Trim();
             user.Phone = txtPhone.Text.Trim();
             user.Address = txtAddress.Text.Trim();
-            user.Profile = databasePath;
+            if (fileName.Equals(""))
+            {
+                user.Profile = "/files/profiles/default-profile.png";
+            }
+            else
+            {
+                user.Profile = databasePath;
+            }
 
             user = new BusinessClass().EditUserDetails(user);
             if(user.status == 1)

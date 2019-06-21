@@ -61,6 +61,8 @@
                 </div>
                 <center>
                     <asp:Button ID="btnAddHospital" CssClass="btn btn-primary" runat="server" Text="Add Now" OnClick="btnAddHospital_Click"></asp:Button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="ViewHospitals.aspx" class="btn btn-default">Cancel</a>
                 </center>
             </div>
 

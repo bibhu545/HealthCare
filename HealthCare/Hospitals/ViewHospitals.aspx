@@ -8,6 +8,17 @@
         th, td{
             text-align: center;
         }
+        .GridPager td:first-child{
+            padding-left: 200px;
+        }
+        .GridPager a, .GridPager span{
+            text-decoration: none;
+            height: 15px;
+            width: 15px;
+            border: 1px solid;
+            padding: 3px 5px 3px 5px;
+            margin: 0px 2px 0px 2px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContent" runat="server">
@@ -37,25 +48,40 @@
             </center>
             <br />
             <div class="table-responsive">
-                <asp:gridview ID="gvHospitals" runat="server" class="table table-striped table-bordered table-hover" AutoGenerateColumns="false" AllowSorting="true" OnSorting="OnSorting">
-                    <Columns>
-                        <asp:BoundField HeaderText="Hospital Name" DataField="hospitalname" SortExpression="hospitalname"/>
-                        <asp:BoundField HeaderText="Address" DataField="address" SortExpression="address"/>
-                        <asp:BoundField HeaderText="Email" DataField="email" SortExpression="email"/>
-                        <asp:BoundField HeaderText="Contact Number" DataField="phone1" SortExpression="phone1"/>
-                        <asp:BoundField HeaderText="Alternative Number" DataField="phone2" SortExpression="phone2"/>
-                        <asp:TemplateField HeaderText="Action">
-                            <ItemTemplate>
-                                <div class="btn-group">
-                                    <a href="HospitalDetails.aspx?id=<%# Eval("hospitalid").ToString() %>" class="btn btn-primary">View</a>
-                                    <a href="EditHospital.aspx?id=<%# Eval("hospitalid").ToString() %>" class="btn btn-primary">Edit</a>
-                                    <a href="DeleteHospital.aspx?id=<%# Eval("hospitalid").ToString() %>" class="btn btn-danger">Delete</a>
-                                </div>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:gridview>
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <asp:gridview ID = "gvHospitals" runat="server" class="table table-striped table-bordered table-hover" AutoGenerateColumns="false"  AllowSorting="true" OnSorting = "OnSorting" AllowPaging = "true" OnPageIndexChanging = "OnPageIndexChanging" PageSize = "4">
+                            
+                            <Columns>
+						        <asp:TemplateField HeaderText="Hospital Name" SortExpression = "hospitalname">
+							        <ItemTemplate>
+								        <%#ViewPrimaryHospital(Eval("isprimary").ToString(), Eval("hospitalname").ToString())%>
+							        </ItemTemplate>
+						        </asp:TemplateField>
+                                <asp:BoundField HeaderText = "Address" DataField = "address" SortExpression = "address"/>
+                                <asp:BoundField HeaderText = "Email" DataField = "email" SortExpression = "email"/>
+                                <asp:BoundField HeaderText = "Contact Number" DataField = "phone1" SortExpression = "phone1"/>
+                                <asp:BoundField HeaderText = "Alternative Number" DataField = "phone2" SortExpression = "phone2"/>
+                                <asp:TemplateField HeaderText = "Action">
+                                    <ItemTemplate>
+                                        <div class = "btn-group">
+                                            <a href = "HospitalDetails.aspx?id=<%# Eval("hospitalid").ToString() %>" class = "btn btn-primary">View</a>
+                                            <a href = "EditHospital.aspx?id=<%# Eval("hospitalid").ToString() %>" class = "btn btn-primary">Edit</a>
+                                            <a href = "DeleteHospital.aspx?id=<%# Eval("hospitalid").ToString() %>" class = "btn btn-danger">Delete</a>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                            <PagerStyle HorizontalAlign="Center" CssClass = "GridPager" />
+                            
+                        </asp:gridview>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </div>
+            <center>
+                <a href="AddHospital.aspx" class="btn btn-primary">Add New Hospital</a>
+            </center>
         </div>
     </div>
 </asp:Content>
