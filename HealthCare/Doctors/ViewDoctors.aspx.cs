@@ -64,7 +64,7 @@ namespace HealthCare.Doctors
         private void BindDataGrid(String sortExpression = null)
         {
             BusinessClass businessClass = new BusinessClass();
-            DataTable dt = businessClass.GetDoctors();
+            DataTable dt = businessClass.GetDoctors(0);
             if (sortExpression != null)
             {
                 if (ViewState["SortDirection"].ToString() == "ASC")

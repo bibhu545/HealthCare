@@ -46,16 +46,28 @@
                         </td>
                     </tr>
                     <tr>
+                        <th>Hospital Name: </th>
+                        <td>
+                            <asp:DropDownList ID="ddlHospitals" CssClass="form-control" runat="server"></asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Speciality: </th>
+                        <td>
+                            <asp:DropDownList ID="ddlSpecialities" CssClass="form-control" runat="server"></asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
                         <th>Address: </th>
                         <td><asp:TextBox ID="txtAddress" class="form-control" runat="server" required="required"></asp:TextBox></td>
                     </tr>
                     <tr>
                         <th>Contact Number: </th>
-                        <td><asp:TextBox ID="txtContactNumber" class="form-control" runat="server" required="required"></asp:TextBox></td>
+                        <td><asp:TextBox ID="txtContact" class="form-control" runat="server" required="required"></asp:TextBox></td>
                     </tr>
                     <tr>
                         <th>Alternative Number: </th>
-                        <td><asp:TextBox ID="txtAlternativeNumber" class="form-control" runat="server"></asp:TextBox></td>
+                        <td><asp:TextBox ID="txtAlternativeContact" class="form-control" runat="server"></asp:TextBox></td>
                     </tr>
                     <tr>
                         <th>Email</th>

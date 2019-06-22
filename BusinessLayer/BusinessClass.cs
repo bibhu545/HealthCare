@@ -63,9 +63,9 @@ namespace BusinessLayer
         {
             return new DataAccessClass().GetSpecialitiesFromDB();
         }
-        public DataTable GetDoctors()
+        public DataTable GetDoctors(int doctorid)
         {
-            return new DataAccessClass().GetDoctorsFromDB();
+            return new DataAccessClass().GetDoctorsFromDB(doctorid);
         }
         public int DeleteHospital(int hospitalid)
         {
@@ -90,6 +90,10 @@ namespace BusinessLayer
         public Doctor AddDoctor(Doctor doctor)
         {
             return new DataAccessClass().AddDoctorToDB(doctor);
+        }
+        public Doctor EditDoctor(Doctor doctor)
+        {
+            return new DataAccessClass().UpdateDoctorToDB(doctor);
         }
     }
 }

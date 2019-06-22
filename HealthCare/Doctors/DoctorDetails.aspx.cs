@@ -28,7 +28,7 @@ namespace HealthCare.Doctors
                     else
                     {
                         int id = Convert.ToInt32(Request.QueryString["id"]);
-                        dt = new BusinessClass().GetDoctorDetails(id);
+                        dt = new BusinessClass().GetDoctors(id);
                         if (dt.Rows.Count <= 0)
                         {
                             Response.Redirect("ViewDoctors.aspx?errorMessage=Please select a valid Hospital to edit.");

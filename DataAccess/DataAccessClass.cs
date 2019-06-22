@@ -325,15 +325,16 @@ namespace DataAccess
             }
             return doctor;
         }
-        public DataTable GetDoctorsFromDB()
+        public DataTable GetDoctorsFromDB(int doctorid)
         {
             DataTable dt = null;
             try
             {
                 conn = new SqlConnection(connectionString);
                 conn.Open();
-                String sql = "select doctors.doctorid, doctors.firstname, hospitals.hospitalname, doctors.address, doctors.phone1, doctors.isprimary from doctors inner join hospitals on doctors.hospitalid = hospitals.hospitalid";
-                SqlCommand scmd = new SqlCommand(sql, conn);
+                SqlCommand scmd = new SqlCommand("GetDoctorDetails", conn);
+                scmd.CommandType = CommandType.StoredProcedure;
+                scmd.Parameters.AddWithValue("@doctorid", doctorid);
                 SqlDataAdapter sda = new SqlDataAdapter(scmd);
                 dt = new DataTable();
                 sda.Fill(dt);
@@ -373,9 +374,7 @@ namespace DataAccess
             {
                 conn = new SqlConnection(connectionString);
                 conn.Open();
-                SqlCommand scmd = new SqlCommand("GetDoctorDetails", conn);
-                scmd.CommandType = CommandType.StoredProcedure;
-                scmd.Parameters.AddWithValue("@doctorid", id);
+                SqlCommand scmd = new SqlCommand("select * from doctors where doctorid="+id, conn);
                 SqlDataAdapter sda = new SqlDataAdapter(scmd);
                 dt = new DataTable();
                 sda.Fill(dt);
@@ -388,6 +387,37 @@ namespace DataAccess
                 }
             }
             return dt;
+        }
+        public Doctor UpdateDoctorToDB(Doctor doctor)
+        {
+            doctor.status = -1;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand scmd = new SqlCommand("UpdateDoctor", conn);
+                scmd.CommandType = CommandType.StoredProcedure;
+                scmd.Parameters.AddWithValue("@doctorid", doctor.DoctorId);
+                scmd.Parameters.AddWithValue("@userid", doctor.UserId);
+                scmd.Parameters.AddWithValue("@hospitalid", doctor.HospitalId);
+                scmd.Parameters.AddWithValue("@firstname", doctor.FirstName);
+                scmd.Parameters.AddWithValue("@lastname", doctor.LastName);
+                scmd.Parameters.AddWithValue("@speciality", doctor.Speciality);
+                scmd.Parameters.AddWithValue("@address", doctor.Address);
+                scmd.Parameters.AddWithValue("@phone1", doctor.Phone1);
+                scmd.Parameters.AddWithValue("@phone2", doctor.Phone2);
+                scmd.Parameters.AddWithValue("@email", doctor.Email);
+                scmd.Parameters.AddWithValue("@isprimary", doctor.IsPrimary);
+                doctor.status = scmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return doctor;
         }
     }
 }

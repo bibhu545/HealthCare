@@ -110,9 +110,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="SiteMaster.Master" />
-    <Content Include="Vault\AddDocument.aspx" />
-    <Content Include="Vault\AddDocumentType.aspx" />
-    <Content Include="Vault\Vault.Master" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -124,8 +121,8 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Register.aspx" />
+    <Content Include="Vault\AddNewDocument.aspx" />
     <Content Include="Vault\ViewDocuments.aspx" />
-    <Content Include="Vault\ViewDocumentTypes.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -273,26 +270,12 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vault\AddDocument.aspx.cs">
-      <DependentUpon>AddDocument.aspx</DependentUpon>
+    <Compile Include="Vault\AddNewDocument.aspx.cs">
+      <DependentUpon>AddNewDocument.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vault\AddDocument.aspx.designer.cs">
-      <DependentUpon>AddDocument.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vault\AddDocumentType.aspx.cs">
-      <DependentUpon>AddDocumentType.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vault\AddDocumentType.aspx.designer.cs">
-      <DependentUpon>AddDocumentType.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vault\Vault.Master.cs">
-      <DependentUpon>Vault.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vault\Vault.Master.designer.cs">
-      <DependentUpon>Vault.Master</DependentUpon>
+    <Compile Include="Vault\AddNewDocument.aspx.designer.cs">
+      <DependentUpon>AddNewDocument.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vault\ViewDocuments.aspx.cs">
       <DependentUpon>ViewDocuments.aspx</DependentUpon>
@@ -300,13 +283,6 @@
     </Compile>
     <Compile Include="Vault\ViewDocuments.aspx.designer.cs">
       <DependentUpon>ViewDocuments.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vault\ViewDocumentTypes.aspx.cs">
-      <DependentUpon>ViewDocumentTypes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vault\ViewDocumentTypes.aspx.designer.cs">
-      <DependentUpon>ViewDocumentTypes.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

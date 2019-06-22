@@ -39,18 +39,37 @@ namespace HealthCare.Doctors
                             doctor.DoctorId = Convert.ToInt32(dt.Rows[0]["doctorid"]);
                             doctor.FirstName = dt.Rows[0]["firstname"].ToString();
                             doctor.LastName = dt.Rows[0]["lastname"].ToString();
+                            doctor.HospitalId = Convert.ToInt32(dt.Rows[0]["hospitalid"]);
+                            doctor.Speciality = Convert.ToInt32(dt.Rows[0]["speciality"]);
                             doctor.Address = dt.Rows[0]["address"].ToString();
                             doctor.Phone1 = dt.Rows[0]["phone1"].ToString();
                             doctor.Phone2 = dt.Rows[0]["phone2"].ToString();
                             doctor.Email = dt.Rows[0]["email"].ToString();
                             doctor.IsPrimary = Convert.ToInt32(dt.Rows[0]["isprimary"]);
+                            Session["doctorid"] = doctor.DoctorId;
+
+                            ddlHospitals.DataSource = new BusinessClass().GetHospitals();
+                            ddlHospitals.DataTextField = "hospitalname";
+                            ddlHospitals.DataValueField = "hospitalid";
+                            ddlHospitals.DataBind();
+
+                            ddlSpecialities.DataSource = new BusinessClass().GetSpecialities();
+                            ddlSpecialities.DataTextField = "speciality";
+                            ddlSpecialities.DataValueField = "specialityid";
+                            ddlSpecialities.DataBind();
 
                             txtFirstName.Text = doctor.FirstName;
                             txtLastName.Text = doctor.LastName;
+                            ddlHospitals.Items.FindByValue(doctor.HospitalId.ToString()).Selected = true;
+                            ddlSpecialities.Items.FindByValue(doctor.Speciality.ToString()).Selected = true;
                             txtAddress.Text = doctor.Address;
-                            txtContactNumber.Text = doctor.Phone1;
-                            txtAlternativeNumber.Text = doctor.Phone2;
+                            txtContact.Text = doctor.Phone1;
+                            txtAlternativeContact.Text = doctor.Phone2;
                             txtEmail.Text = doctor.Email;
+                            if(doctor.IsPrimary == 1)
+                            {
+                                chkSetPrimary.Checked = true;
+                            }
                         }
                     }
                 }
@@ -68,7 +87,35 @@ namespace HealthCare.Doctors
 
         protected void btnEditDoctor_Click(object sender, EventArgs e)
         {
+            doctor = new Doctor();
+            doctor.DoctorId = Convert.ToInt32(Session["doctorid"].ToString());
+            doctor.UserId = Convert.ToInt32(((User)Session["loggedUser"]).UserId);
+            doctor.HospitalId = Convert.ToInt32(ddlHospitals.SelectedItem.Value.ToString());
+            doctor.FirstName = txtFirstName.Text.Trim();
+            doctor.LastName = txtLastName.Text.Trim();
+            doctor.Speciality = Convert.ToInt32(ddlSpecialities.SelectedItem.Value);
+            doctor.Address = txtAddress.Text.Trim();
+            doctor.Phone1 = txtContact.Text.Trim();
+            doctor.Phone2 = txtAlternativeContact.Text.Trim();
+            doctor.Email = txtEmail.Text.Trim();
+            if (chkSetPrimary.Checked)
+            {
+                doctor.IsPrimary = 1;
+            }
+            else
+            {
+                doctor.IsPrimary = 0;
+            }
 
+            doctor = new BusinessClass().EditDoctor(doctor);
+            if (doctor.status == -1)
+            {
+                Response.Redirect("AddDoctor.aspx?errorMessage=Some error occured. Please try again.");
+            }
+            else
+            {
+                Response.Redirect("ViewDoctors.aspx?successMessage=New doctor added.");
+            }
         }
     }
 }

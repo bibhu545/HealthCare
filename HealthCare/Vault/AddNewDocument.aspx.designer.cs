@@ -11,7 +11,7 @@ namespace HealthCare.Vault
 {
 
 
-    public partial class AddDocumentType
+    public partial class AddNewDocument
     {
     }
 }
