@@ -65,6 +65,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\jquery-ui.min.css" />
     <Content Include="Doctors\AddDoctor.aspx" />
     <Content Include="Doctors\DeleteDoctor.aspx" />
     <Content Include="Doctors\DoctorDetails.aspx" />
@@ -75,6 +76,8 @@
     <Content Include="Hospitals\EditHospital.aspx" />
     <Content Include="Hospitals\HospitalDetails.aspx" />
     <Content Include="Hospitals\ViewHospitals.aspx" />
+    <Content Include="images\ajax-loader.gif" />
+    <Content Include="images\content-bg.jpg" />
     <Content Include="Profile\ChangePassword.aspx" />
     <Content Include="Profile\ConfirmRegistration.aspx" />
     <Content Include="Profile\EditProfile.aspx" />

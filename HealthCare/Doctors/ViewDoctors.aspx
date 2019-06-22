@@ -52,7 +52,7 @@
                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
-                        <asp:gridview ID = "gvDoctors" runat="server" class="table table-striped table-bordered table-hover" AutoGenerateColumns="false"  AllowSorting="true" OnSorting = "OnSorting" AllowPaging = "true" OnPageIndexChanging = "OnPageIndexChanging" PageSize = "4">
+                        <asp:gridview ID = "gvDoctors" runat="server" class="table table-bordered table-hover" AutoGenerateColumns="false"  AllowSorting="true" OnSorting = "OnSorting" AllowPaging = "true" OnPageIndexChanging = "OnPageIndexChanging" PageSize = "4">
                             
                             <Columns>
 						        <asp:TemplateField HeaderText="Doctor's Name" SortExpression = "firstname">

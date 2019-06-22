@@ -39,97 +39,101 @@
     </asp:ContentPlaceHolder>
 </head>
 <body class="content-body">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand active" href="/Profile/UserHome.aspx"><span style="color: red;">H</span>ealth<span style="color: red;">C</span>are.com</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-ambulance"></i>
-                            My Hospitals <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/Hospitals/ViewHospitals.aspx">View Hospitals</a></li>
-                            <li><a href="/Hospitals/AddHospital.aspx">Add Hospital</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user-md"></i> My Doctors <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/Doctors/ViewDoctors.aspx">View Doctors</a></li>
-                            <li><a href="/Doctors/AddDoctor.aspx">Add Doctor</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-folder" aria-hidden="true"></i> My Vault <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/Vault/ViewDocuments.aspx">View Documents</a></li>
-                            <li><a href="/Vault/ViewDocumentTypes.aspx">View Document Types</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/Profile/ChangePassword.aspx">Change Password</a></li>
-                    <li><a href="/Logout.aspx"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <form id="form1" runat="server">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9 content-pane">
-                    <asp:ContentPlaceHolder ID="bodyContent" runat="server">
-                    </asp:ContentPlaceHolder>
+    <div class="content-overlay">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand active" href="/Profile/UserHome.aspx"><span style="color: red;">H</span>ealth<span style="color: red;">C</span>are.com</a>
                 </div>
-                <div class="col-md-3 side-pane">
-                    <div class="profile-image">
-                        <center>
-                            <img src="<% Response.Write(user.Profile); %>" alt="Profile Picture" class="img-responsive img-circle" />
-                            <h3>Hello <% Response.Write(user.FirstName); %></h3>
-                            <br />
-                            <div class="list-group">
-                                <a href="/Profile/UserHome.aspx" class="list-group-item">Home</a>
-                                <a href="/Profile/ViewProfile.aspx" class="list-group-item">View Profile</a>
-                                <a href="/Profile/EditProfile.aspx" class="list-group-item">Edit Profile</a>
-                                <a href="/Profile/ChangePassword.aspx" class="list-group-item">Change Password</a>
-                            </div>
-                        </center>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-ambulance"></i>
+                                My Hospitals <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Hospitals/ViewHospitals.aspx">View Hospitals</a></li>
+                                <li><a href="/Hospitals/AddHospital.aspx">Add Hospital</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-user-md"></i> My Doctors <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Doctors/ViewDoctors.aspx">View Doctors</a></li>
+                                <li><a href="/Doctors/AddDoctor.aspx">Add Doctor</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-folder" aria-hidden="true"></i> My Vault <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Vault/ViewDocuments.aspx">View Documents</a></li>
+                                <li><a href="/Vault/AddNewDocument.aspx">Add New Document</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/Profile/ChangePassword.aspx">Change Password</a></li>
+                        <li><a href="/Logout.aspx"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <form id="form1" runat="server">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 content-pane">
+                        <asp:ContentPlaceHolder ID="bodyContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <div class="col-md-3 side-pane">
+                        <div class="profile-image">
+                            <center>
+                                <img src="<% Response.Write(user.Profile); %>" alt="Profile Picture" class="img-responsive img-circle" />
+                                <h3>Hello <% Response.Write(user.FirstName); %></h3>
+                                <br />
+                                <div class="list-group">
+                                    <a href="/Profile/UserHome.aspx" class="list-group-item">Home</a>
+                                    <a href="/Profile/ViewProfile.aspx" class="list-group-item">View Profile</a>
+                                    <a href="/Profile/EditProfile.aspx" class="list-group-item">Edit Profile</a>
+                                    <a href="/Profile/ChangePassword.aspx" class="list-group-item">Change Password</a>
+                                </div>
+                            </center>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
-    <br /><br />
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <p>
-                        Join us at &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#"> <i class="fa fa-facebook"></i> </a>  &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#"> <i class="fa fa-twitter"></i> </a>   &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#"> <i class="fa fa-youtube"></i> </a>   &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#"> <i class="fa fa-instagram"></i> </a> &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#"> <i class="fa fa-github"></i> </a>    &nbsp;&nbsp;&nbsp;&nbsp;
-                    </p> 
-                    <p>Copyright @copy; Healthcare.com 2019</p>
+        </form>
+        <br /><br />
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            Join us at &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="#"> <i class="fa fa-facebook"></i> </a>  &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="#"> <i class="fa fa-twitter"></i> </a>   &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="#"> <i class="fa fa-youtube"></i> </a>   &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="#"> <i class="fa fa-instagram"></i> </a> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="#"> <i class="fa fa-github"></i> </a>    &nbsp;&nbsp;&nbsp;&nbsp;
+                        </p> 
+                        <p>Copyright @copy; Healthcare.com 2019</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <link href="/css/jquery-ui.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.btn-danger').click(function (event) {
@@ -137,6 +141,9 @@
                     event.preventDefault();
                     return false;
                 }
+            });
+            $("#bodyContent_txtIssueDate").datepicker({
+                dateFormat: "dd/mm/yy"
             });
         });
     </script>

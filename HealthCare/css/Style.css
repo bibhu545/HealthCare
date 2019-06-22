@@ -3,7 +3,7 @@
 .home-body {
     margin: 0;
     padding: 0;
-    background-image: url('../images/operation.jpg');
+    background-image: url('/images/operation.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -13,7 +13,7 @@
 .register-body {
     margin: 0;
     padding: 0;
-    background-image: url('../images/doctor-tools.jpg');
+    background-image: url('/images/doctor-tools.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -22,7 +22,21 @@
 
 .content-body {
     font-family: 'Acme', sans-serif;
-    background: linear-gradient(90deg, rgba(163,255,248,1) 0%,rgba(235,251,255,1) 0%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 60%, rgba(235,251,255,1) 100%, rgba(163,255,248,1) 100%);
+    /*background: linear-gradient(90deg, rgba(163,255,248,1) 0%,rgba(235,251,255,1) 0%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 60%, rgba(235,251,255,1) 100%, rgba(163,255,248,1) 100%);*/
+    background-image: url('/images/content-bg.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.content-overlay {
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -5;
+    background: linear-gradient(90deg, rgba(206, 206, 206,0.5) 0%,rgba(239, 237, 237,0.9) 0%, rgba(255,255,255,0.94) 30%, rgba(255,255,255,0.94) 60%, rgba(239, 237, 237,0.9) 100%, rgba(206, 206, 206,0.5) 100%);
 }
 
 .home {
@@ -84,4 +98,10 @@ a{
 .img-circle{
     height: 120px;
     width: 100px;
+}
+.form-control{
+    border: 1px solid;
+}
+.table-custom{
+    background-color: white;
 }

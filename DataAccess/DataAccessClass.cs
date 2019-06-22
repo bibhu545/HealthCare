@@ -419,5 +419,47 @@ namespace DataAccess
             }
             return doctor;
         }
+        public DataTable GetDoctorsByHospitalFromDB(int hospitalId)
+        {
+            DataTable dt;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand scmd = new SqlCommand("select * from doctors where hospitalid=" + hospitalId, conn);
+                SqlDataAdapter sda = new SqlDataAdapter(scmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return dt;
+        }
+        public DataTable GetRecordTypesFromDB()
+        {
+            DataTable dt;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand scmd = new SqlCommand("select * from recordtypes", conn);
+                SqlDataAdapter sda = new SqlDataAdapter(scmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return dt;
+        }
     }
 }

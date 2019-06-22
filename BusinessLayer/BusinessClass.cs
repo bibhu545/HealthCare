@@ -83,6 +83,10 @@ namespace BusinessLayer
         {
             return new DataAccessClass().GetDoctorDetailsFromDB(id);
         }
+        public DataTable GetDoctorsByHospital(int hospitalid)
+        {
+            return new DataAccessClass().GetDoctorsByHospitalFromDB(hospitalid);
+        }
         public Hospital EditHospitalDetails(Hospital hospital)
         {
             return new DataAccessClass().UpdateHospitalToDB(hospital);
@@ -94,6 +98,10 @@ namespace BusinessLayer
         public Doctor EditDoctor(Doctor doctor)
         {
             return new DataAccessClass().UpdateDoctorToDB(doctor);
+        }
+        public DataTable GetRecordTypes()
+        {
+            return new DataAccessClass().GetRecordTypesFromDB();
         }
     }
 }
