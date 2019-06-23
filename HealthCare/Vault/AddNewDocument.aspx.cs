@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DataModels;
 using BusinessLayer;
+using System.IO;
 
 namespace HealthCare.Vault
 {
@@ -64,7 +65,51 @@ namespace HealthCare.Vault
 
         protected void btnAddDocument_Click(object sender, EventArgs e)
         {
+            Document document = new Document();
+            document.UserId = ((User)Session["loggedUser"]).UserId;
+            document.HospitalId = Convert.ToInt32(ddlHospitals.SelectedItem.Value);
+            document.DoctorId = Convert.ToInt32(ddlDoctors.SelectedItem.Value);
+            document.DocumentType = Convert.ToInt32(ddlRecordTypes.SelectedItem.Value);
+            document.IssueDate = txtIssueDate.Text.Trim();
 
+            String path = Server.MapPath(@"~/files/uploads/");
+            String folder = path + document.UserId.ToString() + @"\";
+            List<String> ext = new List<string>() { ".png", ".jpg", ".doc", ".docx", ".pdf" };
+            List<String> allFiles = new List<string>();
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+            Boolean fileStatus = true;
+            foreach (HttpPostedFile file in fileDocuments.PostedFiles)
+            {
+                String fileName = file.FileName;
+                String extension = Path.GetExtension(fileName);
+                if(ext.IndexOf(extension) < 0)
+                {
+                    fileStatus = false;
+                }
+                else
+                {
+                    file.SaveAs(folder + file.FileName);
+                    allFiles.Add(@"/files/uploads/" + document.UserId + @"/" + file.FileName);
+                }
+            }
+
+            if(!fileStatus)
+            {
+                Response.Redirect("AddNewDocument.aspx?errorMessage=Please choose any '.doc', '.docx', '.pdf', '.jpg', '.png' only.");
+            }
+
+            document = new BusinessClass().SaveDocument(document, allFiles);
+            if(document.status != -1)
+            {
+                Response.Redirect("ViewDocuments.aspx?successMessage=New documents uploaded.");
+            }
+            else
+            {
+                Response.Redirect("AddNewDocument.aspx?errorMessage=Some error occured. Please try again.");
+            }
         }
     }
 }

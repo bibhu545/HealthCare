@@ -51,7 +51,6 @@ namespace DataModels
         public int status = -1;
         public int DocumentId { get; set; }
         public int UserId { get; set; }
-        public String DocumentName { get; set; }
         public int HospitalId { get; set; }
         public int DoctorId { get; set; }
         public String IssueDate { get; set; }

@@ -461,5 +461,29 @@ namespace DataAccess
             }
             return dt;
         }
+        public Document SaveDocumentToDB(Document document, List<String> allFiles)
+        {
+            document.status = -1;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                String insertCommand = String.Empty;
+                foreach (String path in allFiles)
+                {
+                    insertCommand += "INSERT INTO documents(userid, hospitalid, doctorid, issuedate, recordtype, filepath) values("+document.UserId+", " + document.HospitalId + ", " + document.DoctorId + ", '" + document.IssueDate + "', " + document.DocumentType + ",'" + path + "');";
+                }
+                SqlCommand scmd = new SqlCommand(insertCommand, conn);
+                document.status = scmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return document;
+        }
     }
 }

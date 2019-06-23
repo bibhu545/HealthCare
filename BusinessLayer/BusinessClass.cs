@@ -103,5 +103,9 @@ namespace BusinessLayer
         {
             return new DataAccessClass().GetRecordTypesFromDB();
         }
+        public Document SaveDocument(Document document, List<String> allFiles)
+        {
+            return new DataAccessClass().SaveDocumentToDB(document, allFiles);
+        }
     }
 }

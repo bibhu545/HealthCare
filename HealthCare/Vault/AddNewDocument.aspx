@@ -54,10 +54,6 @@
                     <label>Select Document: </label>
                     <asp:FileUpload ID="fileDocuments" AllowMultiple="true" runat="server" />
                 </div>
-                <div class="form-group">
-                    <label>Document Name: </label>
-                    <asp:TextBox ID="txtDocumentName" CssClass="form-control" required="required" placeholder="Enter Document Name" runat="server" />
-                </div>
 
                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
