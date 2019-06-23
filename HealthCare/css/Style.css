@@ -36,7 +36,7 @@
     height: 100%;
     width: 100%;
     z-index: -5;
-    background: linear-gradient(90deg, rgba(206, 206, 206,0.5) 0%,rgba(239, 237, 237,0.9) 0%, rgba(255,255,255,0.94) 30%, rgba(255,255,255,0.94) 60%, rgba(239, 237, 237,0.9) 100%, rgba(206, 206, 206,0.5) 100%);
+    background: linear-gradient(90deg, rgba(206, 206, 206,0.5) 0%,rgba(239, 237, 237,0.9) 0%, rgba(255,255,255,0.92) 30%, rgba(255,255,255,0.92) 60%, rgba(239, 237, 237,0.9) 100%, rgba(206, 206, 206,0.5) 100%);
 }
 
 .home {
@@ -50,7 +50,7 @@
     height: 100%;
     width: 100%;
     z-index: -5;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(40, 40, 40, 0.8);
 }
 .login-page-overlay {
     top: 0;
@@ -104,4 +104,63 @@ a{
 }
 .table-custom{
     background-color: white;
+}
+
+.all-items {
+    width: 100%;
+}
+
+    .all-items item {
+        float: left;
+        margin-bottom: 10px;
+    }
+
+li.active {
+    background: #428bca;
+}
+
+.item {
+    height: 175px;
+    padding: 2%;
+}
+
+.inner-item {
+    border: 1px solid grey;
+    border-radius: 5px;
+    height: 100%;
+    transition: transform .2s;
+}
+
+/* Document Showing */
+
+.inner-data {
+    padding: 2px;
+}
+
+.inner-item:hover {
+    border: 1px solid #428bca;
+    transform: scale(1.1);
+    box-shadow: 7px 7px 4px 0px rgba(0,0,0,0.4);
+}
+
+.inner-icon {
+    background-color: lightgrey;
+    height: 75px;
+    align-content: center;
+    text-align: center;
+    border-radius: 5px 5px 1px 1px;
+    margin-bottom: 3%;
+}
+
+.glyphicon-file {
+    font-size: 2em;
+    margin-top: 7%;
+}
+
+.span-badge {
+    float: right;
+}
+
+.well {
+    margin-right: 4%;
 }

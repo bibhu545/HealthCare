@@ -16,6 +16,16 @@ namespace BusinessLayer
         public int Added { get; set; }
         public int Otp { get; set; }
     }
+    public class FileData
+    {
+        public List<String> FileName = new List<string>();
+        public List<String> Extension = new List<string>();
+        public List<String> FilePath = new List<string>();
+        public List<String> IssueDate = new List<string>();
+        public List<String> HospitalName = new List<string>();
+        public List<String> DoctorName = new List<string>();
+        public List<String> RecordType = new List<string>();
+    }
     public class BusinessClass
     {
         public ConfirmRegistration CreateUser(User user)
@@ -106,6 +116,25 @@ namespace BusinessLayer
         public Document SaveDocument(Document document, List<String> allFiles)
         {
             return new DataAccessClass().SaveDocumentToDB(document, allFiles);
+        }
+        public FileData GetFiles(int userid)
+        {
+            DataTable dt = new DataAccessClass().GetFilesFromDB(userid);
+            FileData fileData = new FileData();
+            foreach (DataRow row in dt.Rows)
+            {
+                String file = row["filepath"].ToString();
+                String fName = file.Substring(file.LastIndexOf("/"), file.Length - file.LastIndexOf("/")).Substring(1);
+                String extension = fName.Substring(fName.LastIndexOf(".")).Substring(1); ;
+                fileData.FileName.Add(fName.Replace("." + extension, ""));
+                fileData.Extension.Add(extension);
+                fileData.FilePath.Add(row["filepath"].ToString());
+                fileData.IssueDate.Add(row["issuedate"].ToString());
+                fileData.HospitalName.Add(row["hospitalname"].ToString());
+                fileData.DoctorName.Add(row["firstname"].ToString());
+                fileData.RecordType.Add(row["recordid"].ToString());
+            }
+            return fileData;
         }
     }
 }

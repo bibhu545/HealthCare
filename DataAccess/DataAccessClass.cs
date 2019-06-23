@@ -485,5 +485,28 @@ namespace DataAccess
             }
             return document;
         }
+        public DataTable GetFilesFromDB(int userid)
+        {
+            DataTable dt;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand scmd = new SqlCommand("GetFilesFromDB", conn);
+                scmd.CommandType = CommandType.StoredProcedure;
+                scmd.Parameters.AddWithValue("@userid", userid);
+                SqlDataAdapter sda = new SqlDataAdapter(scmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return dt;
+        }
     }
 }
