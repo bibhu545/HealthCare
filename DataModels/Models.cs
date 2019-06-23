@@ -46,4 +46,17 @@ namespace DataModels
         public String Email { get; set; }
         public int IsPrimary { get; set; }
     }
+    public class Document
+    {
+        public int status = -1;
+        public int DocumentId { get; set; }
+        public int UserId { get; set; }
+        public String DocumentName { get; set; }
+        public int HospitalId { get; set; }
+        public int DoctorId { get; set; }
+        public String IssueDate { get; set; }
+        public int DocumentType { get; set; }
+        public String Path { get; set; }
+        public String UploadDate { get; set; }
+    }
 }
