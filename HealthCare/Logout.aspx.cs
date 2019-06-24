@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LogAndErrors;
 
 namespace HealthCare.Profile
 {
@@ -11,10 +12,17 @@ namespace HealthCare.Profile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            try
             {
-                Session.Contents.RemoveAll();
-                Response.Redirect("Home.aspx");
+                if (!IsPostBack)
+                {
+                    Session.Contents.RemoveAll();
+                    Response.Redirect("Home.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                new LogAndErrorsClass().CatchException(ex);
             }
         }
     }

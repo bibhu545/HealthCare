@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLayer;
 using DataModels;
+using LogAndErrors;
 
 namespace HealthCare
 {
@@ -18,15 +19,22 @@ namespace HealthCare
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            User user = new BusinessClass().Login(txtEmail.Text.Trim(), txtPassword.Text.Trim());
-            if(user.status == 1)
+            try
             {
-                Session["loggedUser"] = user;
-                Response.Redirect("Profile/UserHome.aspx");
+                User user = new BusinessClass().Login(txtEmail.Text.Trim(), txtPassword.Text.Trim());
+                if (user.status == 1)
+                {
+                    Session["loggedUser"] = user;
+                    Response.Redirect("Profile/UserHome.aspx");
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx?errorMessage=Some Error occured. Please try again.");
+                }
             }
-            else
+            catch(Exception ex)
             {
-                Response.Redirect("Login.aspx?errorMessage=Some Error occured. Please try again.");
+                new LogAndErrorsClass().CatchException(ex);
             }
         }
     }

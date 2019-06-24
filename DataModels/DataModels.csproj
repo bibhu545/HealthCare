@@ -43,5 +43,11 @@
     <Compile Include="Models.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogAndErrors\LogAndErrors.csproj">
+      <Project>{97fe803c-a66d-4465-b261-5ac276f0debc}</Project>
+      <Name>LogAndErrors</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

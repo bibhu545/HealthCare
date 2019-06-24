@@ -76,6 +76,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="/Vault/ViewDocuments.aspx">View Documents</a></li>
+                                <li><a href="/Vault/ViewDocumentsV2.aspx">View Documents V2</a></li>
                                 <li><a href="/Vault/AddNewDocument.aspx">Add New Document</a></li>
                             </ul>
                         </li>
@@ -116,12 +117,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p>
-                            Join us at &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="#"> <i class="fa fa-facebook"></i> </a>  &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="#"> <i class="fa fa-twitter"></i> </a>   &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="#"> <i class="fa fa-youtube"></i> </a>   &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="#"> <i class="fa fa-instagram"></i> </a> &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="#"> <i class="fa fa-github"></i> </a>    &nbsp;&nbsp;&nbsp;&nbsp;
+                            Join us at 
+                            <a href="#"> <i class="fa fa-facebook"></i> </a>  
+                            <a href="#"> <i class="fa fa-twitter"></i> </a>   
+                            <a href="#"> <i class="fa fa-youtube"></i> </a>   
+                            <a href="#"> <i class="fa fa-instagram"></i> </a> 
+                            <a href="#"> <i class="fa fa-github"></i> </a>    
                         </p> 
                         <p>Copyright @copy; Healthcare.com 2019</p>
                     </div>
@@ -142,9 +143,9 @@
                     return false;
                 }
             });
-            $("#bodyContent_txtIssueDate").datepicker({
-                dateFormat: "dd/mm/yy"
-            });
+            $("#bodyContent_txtIssueDate").datepicker();
+            $("#bodyContent_txtFromDate").datepicker();
+            $("#bodyContent_txtToDate").datepicker();
         });
     </script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>

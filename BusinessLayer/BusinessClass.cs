@@ -136,5 +136,17 @@ namespace BusinessLayer
             }
             return fileData;
         }
+        public DataTable GetFilesV2(int userid)
+        {
+            return new DataAccessClass().GetFilesFromDBV2(userid);
+        }
+        public DataTable GetFilteredFilesV2(int userid,DateTime startDate, DateTime endDate)
+        {
+            return new DataAccessClass().GetFilteredFilesFromDBV2(userid, startDate, endDate);
+        }
+        public int DeleteDocument(int documentid)
+        {
+            return new DataAccessClass().DeleteDocumentFromDB(documentid);
+        }
     }
 }

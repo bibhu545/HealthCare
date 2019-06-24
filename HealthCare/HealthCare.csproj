@@ -125,7 +125,10 @@
     <Content Include="Global.asax" />
     <Content Include="Register.aspx" />
     <Content Include="Vault\AddNewDocument.aspx" />
+    <Content Include="Vault\DeleteDocument.aspx" />
+    <Content Include="Vault\Download.aspx" />
     <Content Include="Vault\ViewDocuments.aspx" />
+    <Content Include="Vault\ViewDocumentsV2.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -280,12 +283,33 @@
     <Compile Include="Vault\AddNewDocument.aspx.designer.cs">
       <DependentUpon>AddNewDocument.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vault\DeleteDocument.aspx.cs">
+      <DependentUpon>DeleteDocument.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vault\DeleteDocument.aspx.designer.cs">
+      <DependentUpon>DeleteDocument.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vault\Download.aspx.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vault\Download.aspx.designer.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vault\ViewDocuments.aspx.cs">
       <DependentUpon>ViewDocuments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vault\ViewDocuments.aspx.designer.cs">
       <DependentUpon>ViewDocuments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vault\ViewDocumentsV2.aspx.cs">
+      <DependentUpon>ViewDocumentsV2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vault\ViewDocumentsV2.aspx.designer.cs">
+      <DependentUpon>ViewDocumentsV2.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +323,10 @@
     <ProjectReference Include="..\DataModels\DataModels.csproj">
       <Project>{9c3a22a5-6b0b-4509-ab51-7397e5193721}</Project>
       <Name>DataModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogAndErrors\LogAndErrors.csproj">
+      <Project>{97fe803c-a66d-4465-b261-5ac276f0debc}</Project>
+      <Name>LogAndErrors</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

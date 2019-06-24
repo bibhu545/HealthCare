@@ -6,7 +6,6 @@
             padding-top: 7%;
         }
     </style>
-
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContent" runat="server">
@@ -67,15 +66,19 @@
 
                         <div class="item record col-md-4">
                             <div class="inner-item">
-                                <div class="inner-icon">
-                                    <span class="glyphicon glyphicon-file"></span>
-                                </div>
+                                <a href="<%  Response.Write(fileData.FilePath.ElementAt(i)); %>" style="text-decoration:none" target="_blank">
+                                    <div class="inner-icon">
+                                        <span class="glyphicon glyphicon-file"></span>
+                                    </div>
+                                </a>
                                 <div class="inner-data">
-                                    <span class="file-name"><%  Response.Write(fileData.FileName.ElementAt(i)); %></span>
+                                    <a href="<%  Response.Write(fileData.FilePath.ElementAt(i)); %>" style="text-decoration:none" target="_blank">
+                                        <span class="file-name"><%  Response.Write(fileData.FileName.ElementAt(i)); %></span>
+                                    </a>
                                     <br />
-                                    <small class="file-date"> <%  Response.Write(fileData.HospitalName.ElementAt(0)); %> </small>
+                                    <small class="file-date"> <%  Response.Write(fileData.HospitalName.ElementAt(i)); %> </small>
                                     <span class="badge span-badge">
-                                        <small class="file-date"> <%  Response.Write(fileData.IssueDate.ElementAt(0)); %> </small> - 
+                                        <small class="file-date"> <%  Response.Write(fileData.IssueDate.ElementAt(i)); %> </small> - 
                                         <%  Response.Write(fileData.Extension.ElementAt(i)); %>
                                     </span>
                                 </div>
@@ -86,15 +89,19 @@
 
                         <div class="item report col-md-4">
                             <div class="inner-item">
-                                <div class="inner-icon">
-                                    <span class="glyphicon glyphicon-file"></span>
-                                </div>
+                                <a href="<%  Response.Write(fileData.FilePath.ElementAt(i)); %>" style="text-decoration:none" target="_blank">
+                                    <div class="inner-icon">
+                                        <span class="glyphicon glyphicon-file"></span>
+                                    </div>
+                                </a>
                                 <div class="inner-data">
-                                    <span class="file-name"><%  Response.Write(fileData.FileName.ElementAt(i)); %></span>
+                                    <a href="<%  Response.Write(fileData.FilePath.ElementAt(i)); %>" style="text-decoration:none" target="_blank">
+                                        <span class="file-name"><%  Response.Write(fileData.FileName.ElementAt(i)); %></span>
+                                    </a>
                                     <br />
-                                    <small class="file-date"> <%  Response.Write(fileData.HospitalName.ElementAt(0)); %> </small>
+                                    <small class="file-date"> <%  Response.Write(fileData.HospitalName.ElementAt(i)); %> </small>
                                     <span class="badge span-badge">
-                                        <small class="file-date"> <%  Response.Write(fileData.IssueDate.ElementAt(0)); %> </small> - 
+                                        <small class="file-date"> <%  Response.Write(fileData.IssueDate.ElementAt(i)); %> </small> - 
                                         <%  Response.Write(fileData.Extension.ElementAt(i)); %>
                                     </span>
                                 </div>
@@ -105,15 +112,19 @@
 
                         <div class="item prescription col-md-4">
                             <div class="inner-item">
-                                <div class="inner-icon">
-                                    <span class="glyphicon glyphicon-file"></span>
-                                </div>
+                                <a href="<%  Response.Write(fileData.FilePath.ElementAt(i)); %>" style="text-decoration:none" target="_blank">
+                                    <div class="inner-icon">
+                                        <span class="glyphicon glyphicon-file"></span>
+                                    </div>
+                                </a>
                                 <div class="inner-data">
-                                    <span class="file-name"><%  Response.Write(fileData.FileName.ElementAt(i)); %></span>
+                                    <a href="<%  Response.Write(fileData.FilePath.ElementAt(i)); %>" style="text-decoration:none" target="_blank">
+                                        <span class="file-name"><%  Response.Write(fileData.FileName.ElementAt(i)); %></span>
+                                    </a>
                                     <br />
-                                    <small class="file-date"> <%  Response.Write(fileData.HospitalName.ElementAt(0)); %> </small>
+                                    <small class="file-date"> <%  Response.Write(fileData.HospitalName.ElementAt(i)); %> </small>
                                     <span class="badge span-badge">
-                                        <small class="file-date"> <%  Response.Write(fileData.IssueDate.ElementAt(0)); %> </small> - 
+                                        <small class="file-date"> <%  Response.Write(fileData.IssueDate.ElementAt(i)); %> </small> - 
                                         <%  Response.Write(fileData.Extension.ElementAt(i)); %>
                                     </span>
                                 </div>
