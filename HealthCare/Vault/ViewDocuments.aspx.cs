@@ -29,17 +29,18 @@ namespace HealthCare.Vault
                     else if (Session["inactiveUser"] != null)
                     {
                         user = (User)Session["inactiveUser"];
-                        Response.Redirect("ConfirmRegistration.aspx?errorMessage=Your account is not activated yet.");
+                        Response.Redirect("ConfirmRegistration.aspx?errorMessage=Your account is not activated yet.", false);
                     }
                     else
                     {
-                        Response.Redirect("../Login.aspx?errorMessage=You have to login first.");
+                        Response.Redirect("../Login.aspx?errorMessage=You have to login first.", false);
                     }
                 }
             }
             catch (Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
     }

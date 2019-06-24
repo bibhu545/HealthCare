@@ -42,17 +42,18 @@ namespace HealthCare.Vault
                     else if (Session["inactiveUser"] != null)
                     {
                         user = (User)Session["inactiveUser"];
-                        Response.Redirect("ConfirmRegistration.aspx?errorMessage=Your account is not activated yet.");
+                        Response.Redirect("ConfirmRegistration.aspx?errorMessage=Your account is not activated yet.", false);
                     }
                     else
                     {
-                        Response.Redirect("../Login.aspx?errorMessage=You have to login first.");
+                        Response.Redirect("../Login.aspx?errorMessage=You have to login first.", false);
                     }
                 }
             }
             catch (Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
 
@@ -76,6 +77,7 @@ namespace HealthCare.Vault
             catch(Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
 
@@ -116,22 +118,23 @@ namespace HealthCare.Vault
 
                 if (!fileStatus)
                 {
-                    Response.Redirect("AddNewDocument.aspx?errorMessage=Please choose any '.doc', '.docx', '.pdf', '.jpg', '.png' only.");
+                    Response.Redirect("AddNewDocument.aspx?errorMessage=Please choose any '.doc', '.docx', '.pdf', '.jpg', '.png' only.", false);
                 }
 
                 document = new BusinessClass().SaveDocument(document, allFiles);
                 if (document.status != -1)
                 {
-                    Response.Redirect("ViewDocuments.aspx?successMessage=New documents uploaded.");
+                    Response.Redirect("ViewDocuments.aspx?successMessage=New documents uploaded.", false);
                 }
                 else
                 {
-                    Response.Redirect("AddNewDocument.aspx?errorMessage=Some error occured. Please try again.");
+                    Response.Redirect("AddNewDocument.aspx?errorMessage=Some error occured. Please try again.", false);
                 }
             }
             catch(Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
     }

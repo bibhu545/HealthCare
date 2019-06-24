@@ -19,16 +19,17 @@ namespace HealthCare.Vault
                 int deleted = new BusinessClass().DeleteDocument(documentid);
                 if (deleted == -1)
                 {
-                    Response.Redirect("ViewDocumentsV2.aspx?errorMessage=Some error occured. Please try again.");
+                    Response.Redirect("ViewDocumentsV2.aspx?errorMessage=Some error occured. Please try again.", false);
                 }
                 else
                 {
-                    Response.Redirect("ViewDocumentsV2.aspx?successMessage=Record Deleted.");
+                    Response.Redirect("ViewDocumentsV2.aspx?successMessage=Record Deleted.", false);
                 }
             }
             catch (Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
     }

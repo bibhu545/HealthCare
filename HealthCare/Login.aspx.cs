@@ -25,16 +25,17 @@ namespace HealthCare
                 if (user.status == 1)
                 {
                     Session["loggedUser"] = user;
-                    Response.Redirect("Profile/UserHome.aspx");
+                    Response.Redirect("/Profile/UserHome.aspx", false);
                 }
                 else
                 {
-                    Response.Redirect("Login.aspx?errorMessage=Some Error occured. Please try again.");
+                    Response.Redirect("/Login.aspx?errorMessage=Some Error occured. Please try again.", false);
                 }
             }
             catch(Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
     }

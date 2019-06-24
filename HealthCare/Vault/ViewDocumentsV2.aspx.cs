@@ -34,17 +34,18 @@ namespace HealthCare.Vault
                     else if (Session["inactiveUser"] != null)
                     {
                         user = (User)Session["inactiveUser"];
-                        Response.Redirect("ConfirmRegistration.aspx?errorMessage=Your account is not activated yet.");
+                        Response.Redirect("ConfirmRegistration.aspx?errorMessage=Your account is not activated yet.", false);
                     }
                     else
                     {
-                        Response.Redirect("../Login.aspx?errorMessage=You have to login first.");
+                        Response.Redirect("../Login.aspx?errorMessage=You have to login first.", false);
                     }
                 }
             }
             catch (Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
         public String GetFileName(String filepath)
@@ -58,6 +59,7 @@ namespace HealthCare.Vault
             catch (Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
             return null;
         }
@@ -71,6 +73,7 @@ namespace HealthCare.Vault
             catch (Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
             return null;
         }
@@ -89,6 +92,7 @@ namespace HealthCare.Vault
             catch (Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
 
@@ -101,6 +105,7 @@ namespace HealthCare.Vault
             catch (Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
         private void BindDataGrid(String sortExpression = null)
@@ -132,6 +137,7 @@ namespace HealthCare.Vault
             catch (Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
         private void BindFilteredDataGrid(String sortExpression = null)
@@ -163,6 +169,7 @@ namespace HealthCare.Vault
             catch (Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
 
@@ -176,15 +183,15 @@ namespace HealthCare.Vault
                 String[] to = toDate.Split('/');
                 if (from.Length != 3 || to.Length != 3)
                 {
-                    Response.Redirect("ViewDocumentsV2.aspx?errorMessage=Start and end date combination is not valid.");
+                    Response.Redirect("ViewDocumentsV2.aspx?errorMessage=Start and end date combination is not valid.", false);
                 }
-                else if (from.Length == 3 & to.Length == 3)
-                {
-                    if (from[2].Length != 4 || (Convert.ToInt32(from[0]) <= 0 && Convert.ToInt32(from[0]) > 12) || (Convert.ToInt32(from[1]) <= 0 && Convert.ToInt32(from[1]) > 31))
-                    {
-                        Response.Redirect("ViewDocumentsV2.aspx?errorMessage=Start and end date combination is not valid.");
-                    }
-                }
+                //else if (from.Length == 3 && to.Length == 3)
+                //{
+                //    if (from[2].Length != 4 || (Convert.ToInt32(from[0]) <= 0 && Convert.ToInt32(from[0]) > 12) || (Convert.ToInt32(from[1]) <= 0 && Convert.ToInt32(from[1]) > 31))
+                //    {
+                //        Response.Redirect("ViewDocumentsV2.aspx?errorMessage=Start and end date combination is not valid.", false);
+                //    }
+                //}
                 else
                 {
                     fromDateTime = new DateTime(Convert.ToInt32(from[2]), Convert.ToInt32(from[0]), Convert.ToInt32(from[1]));
@@ -195,13 +202,14 @@ namespace HealthCare.Vault
                     }
                     else
                     {
-                        Response.Redirect("ViewDocumentsV2.aspx?errorMessage=Start and end date combination is not valid.");
+                        Response.Redirect("ViewDocumentsV2.aspx?errorMessage=Start and end date combination is not valid.", false);
                     }
                 }
             }
             catch (Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
     }

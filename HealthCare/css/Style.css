@@ -164,3 +164,28 @@ li.active {
 .well {
     margin-right: 4%;
 }
+
+body {
+    font-family: 'Acme', sans-serif;
+}
+
+.side-pane {
+    padding-top: 13%;
+    min-height: 80vh;
+}
+
+.content-pane {
+    padding-top: 13%;
+    min-height: 80vh;
+}
+
+.img-circle {
+    border: 1px solid;
+}
+
+.footer {
+    min-height: 7vh;
+    background-color: lightgray;
+    text-align: center;
+    padding: 1.5%;
+}

@@ -17,12 +17,13 @@ namespace HealthCare.Profile
                 if (!IsPostBack)
                 {
                     Session.Contents.RemoveAll();
-                    Response.Redirect("Home.aspx");
+                    Response.Redirect("/Home.aspx", false);
                 }
             }
             catch (Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
     }

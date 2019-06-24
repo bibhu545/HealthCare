@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using DataModels;
 using BusinessLayer;
 using System.Data;
+using LogAndErrors;
 
 namespace HealthCare.Hospitals
 {
@@ -15,36 +16,53 @@ namespace HealthCare.Hospitals
         public User user = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                if (Session["loggedUser"] != null)
+                if (!IsPostBack)
                 {
-                    user = (User)Session["loggedUser"];
-                    ViewState["SortDirection"] = "ASC";
-                    BindDataGrid();
+                    if (Session["loggedUser"] != null)
+                    {
+                        user = (User)Session["loggedUser"];
+                        ViewState["SortDirection"] = "ASC";
+                        BindDataGrid();
+                    }
+                    else if (Session["inactiveUser"] != null)
+                    {
+                        user = (User)Session["inactiveUser"];
+                        Response.Redirect("ConfirmRegistration.aspx?errorMessage=Your account is not activated yet.", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("../Login.aspx?errorMessage=You have to login first.", false);
+                    }
                 }
-                else if (Session["inactiveUser"] != null)
-                {
-                    user = (User)Session["inactiveUser"];
-                    Response.Redirect("ConfirmRegistration.aspx?errorMessage=Your account is not activated yet.");
-                }
-                else
-                {
-                    Response.Redirect("../Login.aspx?errorMessage=You have to login first.");
-                }
+            }
+            catch (Exception ex)
+            {
+                new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
         public String ViewPrimaryHospital(String isPrimary, String name)
         {
-            int primary = Convert.ToInt32(isPrimary);
-            if(primary == 1)
+            try
             {
-                return name + "<br /> (Primary)";
+                int primary = Convert.ToInt32(isPrimary);
+                if (primary == 1)
+                {
+                    return name + "<br /> (Primary)";
+                }
+                else
+                {
+                    return name;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return name;
+                new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
+            return null;
         }
         private string SortDirection
         {
@@ -53,37 +71,61 @@ namespace HealthCare.Hospitals
         }
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gvHospitals.PageIndex = e.NewPageIndex;
-            this.BindDataGrid();
+            try
+            {
+                gvHospitals.PageIndex = e.NewPageIndex;
+                this.BindDataGrid();
+            }
+            catch (Exception ex)
+            {
+                new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
+            }
         }
 
         protected void OnSorting(object sender, GridViewSortEventArgs e)
         {
-            this.BindDataGrid(e.SortExpression);
+            try
+            {
+                this.BindDataGrid(e.SortExpression);
+            }
+            catch (Exception ex)
+            {
+                new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
+            }
         }
         private void BindDataGrid(String sortExpression = null)
         {
-            BusinessClass businessClass = new BusinessClass();
-            DataTable dt = businessClass.GetHospitals();
-            if (sortExpression != null)
+            try
             {
-                if (ViewState["SortDirection"].ToString() == "ASC")
+                BusinessClass businessClass = new BusinessClass();
+                DataTable dt = businessClass.GetHospitals();
+                if (sortExpression != null)
                 {
-                    ViewState["SortDirection"] = "DESC";
+                    if (ViewState["SortDirection"].ToString() == "ASC")
+                    {
+                        ViewState["SortDirection"] = "DESC";
+                    }
+                    else
+                    {
+                        ViewState["SortDirection"] = "ASC";
+                    }
+                    DataView dvData = new DataView(dt);
+                    dvData.Sort = sortExpression + " " + ViewState["SortDirection"];
+                    gvHospitals.DataSource = dvData;
                 }
                 else
                 {
-                    ViewState["SortDirection"] = "ASC";
+                    gvHospitals.DataSource = dt;
                 }
-                DataView dvData = new DataView(dt);
-                dvData.Sort = sortExpression + " " + ViewState["SortDirection"];
-                gvHospitals.DataSource = dvData;
+                gvHospitals.DataBind();
             }
-            else
+            catch (Exception ex)
             {
-                gvHospitals.DataSource = dt;
+                new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
-            gvHospitals.DataBind();
         }
     }
 }

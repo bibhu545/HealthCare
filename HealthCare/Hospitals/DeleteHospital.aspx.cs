@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLayer;
+using LogAndErrors;
 
 namespace HealthCare.Hospitals
 {
@@ -12,18 +13,26 @@ namespace HealthCare.Hospitals
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            try
             {
-                int hospitalid = Convert.ToInt32(Request.QueryString["id"]);
-                int deleted = new BusinessClass().DeleteHospital(hospitalid);
-                if(deleted == -1)
+                if (!IsPostBack)
                 {
-                    Response.Redirect("ViewHospitals.aspx?errorMessage=Some error occured. Please try again.");
+                    int hospitalid = Convert.ToInt32(Request.QueryString["id"]);
+                    int deleted = new BusinessClass().DeleteHospital(hospitalid);
+                    if (deleted == -1)
+                    {
+                        Response.Redirect("ViewHospitals.aspx?errorMessage=Some error occured. Please try again.", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("ViewHospitals.aspx?successMessage=Record Deleted.", false);
+                    }
                 }
-                else
-                {
-                    Response.Redirect("ViewHospitals.aspx?successMessage=Record Deleted.");
-                }
+            }
+            catch (Exception ex)
+            {
+                new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
     }

@@ -71,6 +71,7 @@
     <Content Include="Doctors\DoctorDetails.aspx" />
     <Content Include="Doctors\EditDoctor.aspx" />
     <Content Include="Doctors\ViewDoctors.aspx" />
+    <Content Include="ErrorPage.aspx" />
     <Content Include="Hospitals\AddHospital.aspx" />
     <Content Include="Hospitals\DeleteHospital.aspx" />
     <Content Include="Hospitals\EditHospital.aspx" />
@@ -166,6 +167,13 @@
     </Compile>
     <Compile Include="Doctors\ViewDoctors.aspx.designer.cs">
       <DependentUpon>ViewDoctors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Hospitals\AddHospital.aspx.cs">
       <DependentUpon>AddHospital.aspx</DependentUpon>

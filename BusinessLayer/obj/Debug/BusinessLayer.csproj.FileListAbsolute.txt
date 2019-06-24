@@ -7,3 +7,5 @@ D:\VisualStudio17\HealthCare\BusinessLayer\bin\Debug\DataModels.pdb
 D:\VisualStudio17\HealthCare\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 D:\VisualStudio17\HealthCare\BusinessLayer\obj\Debug\BusinessLayer.dll
 D:\VisualStudio17\HealthCare\BusinessLayer\obj\Debug\BusinessLayer.pdb
+D:\VisualStudio17\HealthCare\BusinessLayer\bin\Debug\LogAndErrors.dll
+D:\VisualStudio17\HealthCare\BusinessLayer\bin\Debug\LogAndErrors.pdb

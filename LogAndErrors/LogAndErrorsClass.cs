@@ -10,7 +10,7 @@ namespace LogAndErrors
     {
         public void CatchException(Exception ex)
         {
-
+            Console.WriteLine(ex.Message);
         }
     }
 }

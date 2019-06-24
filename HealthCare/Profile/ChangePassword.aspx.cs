@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLayer;
 using DataModels;
+using LogAndErrors;
 
 namespace HealthCare.Profile
 {
@@ -14,51 +15,67 @@ namespace HealthCare.Profile
         public static User user = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                if (Session["loggedUser"] != null)
+                if (!IsPostBack)
                 {
-                    user = (User)Session["loggedUser"];
+                    if (Session["loggedUser"] != null)
+                    {
+                        user = (User)Session["loggedUser"];
+                    }
+                    else if (Session["inactiveUser"] != null)
+                    {
+                        user = (User)Session["inactiveUser"];
+                        Response.Redirect("ConfirmRegistration.aspx?errorMessage=Your account is not activated yet.", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("../Login.aspx?errorMessage=You have to login first.", false);
+                    }
                 }
-                else if (Session["inactiveUser"] != null)
-                {
-                    user = (User)Session["inactiveUser"];
-                    Response.Redirect("ConfirmRegistration.aspx?errorMessage=Your account is not activated yet.");
-                }
-                else
-                {
-                    Response.Redirect("../Login.aspx?errorMessage=You have to login first.");
-                }
+            }
+            catch (Exception ex)
+            {
+                new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
 
         protected void btnChangePassword_Click(object sender, EventArgs e)
         {
-            user = (User)Session["loggedUser"];
-            if (user.Password.Equals(txtCurrentPassword.Text.Trim()))
+            try
             {
-                if (txtNewPassword.Text.Trim().Equals(txtConfirmPassword.Text.Trim()))
+                user = (User)Session["loggedUser"];
+                if (user.Password.Equals(txtCurrentPassword.Text.Trim()))
                 {
-                    user.Password = txtNewPassword.Text.Trim();
-                    user = new BusinessClass().updatePassword(user);
-                    if (user.status == 1)
+                    if (txtNewPassword.Text.Trim().Equals(txtConfirmPassword.Text.Trim()))
                     {
-                        Session["loggedUser"] = user;
-                        Response.Redirect("ViewProfile.aspx?successMessage=Password updated.");
+                        user.Password = txtNewPassword.Text.Trim();
+                        user = new BusinessClass().updatePassword(user);
+                        if (user.status == 1)
+                        {
+                            Session["loggedUser"] = user;
+                            Response.Redirect("ViewProfile.aspx?successMessage=Password updated.", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("ChangePassword.aspx?errorMessage=Some error occured. Please try again.", false);
+                        }
                     }
                     else
                     {
-                        Response.Redirect("ChangePassword.aspx?errorMessage=Some error occured. Please try again.");
+                        Response.Redirect("ChangePassword.aspx?errorMessage=Passwords do not match.", false);
                     }
                 }
                 else
                 {
-                    Response.Redirect("ChangePassword.aspx?errorMessage=Passwords do not match.");
+                    Response.Redirect("ChangePassword.aspx?errorMessage=Current Password is not correct.", false);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Response.Redirect("ChangePassword.aspx?errorMessage=Current Password is not correct.");
+                new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
     }

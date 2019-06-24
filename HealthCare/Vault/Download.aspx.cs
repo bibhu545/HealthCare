@@ -13,38 +13,32 @@ namespace HealthCare.Vault
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
-                String filePath = Request.QueryString["fileName"];
-                FileInfo file = new FileInfo(Server.MapPath("~") + filePath);
-                if (file.Exists)
-                {
-                    Response.Clear();
-                    String fName = filePath.Substring(filePath.LastIndexOf("/"), filePath.Length - filePath.LastIndexOf("/")).Substring(1);
-                    String extension = fName.Substring(fName.LastIndexOf(".")).Substring(1);
-                    if (extension.Equals("doc") || extension.Equals("docx"))
-                    {
-                        Response.ContentType = "Application/msword";
-                        Response.AppendHeader("Content-Disposition", "attachment; filename=record.doc");
-                    }
-                    else if (extension.Equals("jpg") || extension.Equals("jpeg") || extension.Equals("jpg"))
-                    {
-                        Response.ContentType = "image/jpg";
-                        Response.AppendHeader("Content-Disposition", "attachment; filename=record.png");
-                    }
-                    else
-                    {
-                        Response.ContentType = "application/pdf";
-                        Response.AppendHeader("Content-Disposition", "attachment; filename=record.pdf");
-                    }
 
-                    Response.TransmitFile(Server.MapPath("~") + filePath);
-                    Response.End();
-                }
-            }
-            catch (Exception ex)
+            String filePath = Request.QueryString["fileName"];
+            FileInfo file = new FileInfo(Server.MapPath("~") + filePath);
+            if (file.Exists)
             {
-                new LogAndErrorsClass().CatchException(ex);
+                Response.Clear();
+                String fName = filePath.Substring(filePath.LastIndexOf("/"), filePath.Length - filePath.LastIndexOf("/")).Substring(1);
+                String extension = fName.Substring(fName.LastIndexOf(".")).Substring(1);
+                if (extension.Equals("doc") || extension.Equals("docx"))
+                {
+                    Response.ContentType = "Application/msword";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=record.doc");
+                }
+                else if (extension.Equals("jpg") || extension.Equals("jpeg") || extension.Equals("jpg"))
+                {
+                    Response.ContentType = "image/jpg";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=record.png");
+                }
+                else
+                {
+                    Response.ContentType = "application/pdf";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=record.pdf");
+                }
+
+                Response.TransmitFile(Server.MapPath("~") + filePath);
+                Response.End();
             }
         }
     }

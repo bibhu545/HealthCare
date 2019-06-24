@@ -33,17 +33,18 @@ namespace HealthCare
                 Session["inactiveUser"] = user;
                 if (cr.Added != -1)
                 {
-                    Response.Redirect("Profile/ConfirmRegistration.aspx");
+                    Response.Redirect("Profile/ConfirmRegistration.aspx", false);
                 }
                 else
                 {
-                    Response.Redirect("ConfirmRegistration.aspx?errorMessage=Some Error occured. Please try again.");
+                    Response.Redirect("ConfirmRegistration.aspx?errorMessage=Some Error occured. Please try again.", false);
                 }
 
             }
             catch (Exception ex)
             {
                 new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
     }

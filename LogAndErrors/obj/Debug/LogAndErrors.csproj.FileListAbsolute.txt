@@ -1,0 +1,5 @@
+D:\VisualStudio17\HealthCare\LogAndErrors\bin\Debug\LogAndErrors.dll
+D:\VisualStudio17\HealthCare\LogAndErrors\bin\Debug\LogAndErrors.pdb
+D:\VisualStudio17\HealthCare\LogAndErrors\obj\Debug\LogAndErrors.csprojResolveAssemblyReference.cache
+D:\VisualStudio17\HealthCare\LogAndErrors\obj\Debug\LogAndErrors.dll
+D:\VisualStudio17\HealthCare\LogAndErrors\obj\Debug\LogAndErrors.pdb

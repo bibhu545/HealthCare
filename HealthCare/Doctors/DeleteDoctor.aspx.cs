@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DataModels;
 using BusinessLayer;
+using LogAndErrors;
 
 namespace HealthCare.Doctors
 {
@@ -13,25 +14,33 @@ namespace HealthCare.Doctors
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                if (Session["loggedUser"] != null)
+                if (!IsPostBack)
                 {
-                    int doctorid = Convert.ToInt32(Request.QueryString["id"]);
-                    int deleted = new BusinessClass().DeleteDoctor(doctorid);
-                    if (deleted == -1)
+                    if (Session["loggedUser"] != null)
                     {
-                        Response.Redirect("ViewDoctors.aspx?errorMessage=Some error occured. Please try again.");
+                        int doctorid = Convert.ToInt32(Request.QueryString["id"]);
+                        int deleted = new BusinessClass().DeleteDoctor(doctorid);
+                        if (deleted == -1)
+                        {
+                            Response.Redirect("ViewDoctors.aspx?errorMessage=Some error occured. Please try again.", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("ViewDoctors.aspx?successMessage=Record Deleted.", false);
+                        }
                     }
                     else
                     {
-                        Response.Redirect("ViewDoctors.aspx?successMessage=Record Deleted.");
+                        Response.Redirect("Login.aspx?errorMessage=You have to login first.", false);
                     }
                 }
-                else
-                {
-                    Response.Redirect("Login.aspx?errorMessage=You have to login first.");
-                }
+            }
+            catch (Exception ex)
+            {
+                new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx");
             }
         }
     }

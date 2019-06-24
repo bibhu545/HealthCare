@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLayer;
 using DataModels;
+using LogAndErrors;
 
 namespace HealthCare.Profile
 {
@@ -13,37 +14,53 @@ namespace HealthCare.Profile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["loggedUser"] == null && Session["inactiveUser"] == null)
+            try
             {
-                Response.Redirect("../Register.aspx?errorMessage=Please register to continue.");
+                if (Session["loggedUser"] == null && Session["inactiveUser"] == null)
+                {
+                    Response.Redirect("../Register.aspx?errorMessage=Please register to continue.", false);
+                }
+            }
+            catch (Exception ex)
+            {
+                new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
 
         protected void btnAddHospital_Click(object sender, EventArgs e)
         {
-            String otp = txtOtp.Text.Trim();
-            if (Session["otp"] != null)
+            try
             {
-                if (otp.Equals(Session["otp"].ToString()))
+                String otp = txtOtp.Text.Trim();
+                if (Session["otp"] != null)
                 {
-                    int activated = new BusinessClass().ActivateUser((User) Session["inactiveUser"]);
-                    if (activated != -1)
+                    if (otp.Equals(Session["otp"].ToString()))
                     {
-                        Response.Redirect("../Login.aspx?successMessage=Account Activated. Please login to continue.");
+                        int activated = new BusinessClass().ActivateUser((User)Session["inactiveUser"]);
+                        if (activated != -1)
+                        {
+                            Response.Redirect("../Login.aspx?successMessage=Account Activated. Please login to continue.", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("ConfirmRegistration.aspx?errorMessage=Some error occured. Please try again.", false);
+                        }
                     }
                     else
                     {
-                        Response.Redirect("ConfirmRegistration.aspx?errorMessage=Some error occured. Please try again.");
+                        Response.Redirect("ConfirmRegistration.aspx?errorMessage=Invalid OTP. Please try again.", false);
                     }
                 }
                 else
                 {
-                    Response.Redirect("ConfirmRegistration.aspx?errorMessage=Invalid OTP. Please try again.");
+                    Response.Redirect("../Register.aspx?errorMessage=Seesion expired. Please try again.", false);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Response.Redirect("../Register.aspx?errorMessage=Seesion expired. Please try again.");
+                new LogAndErrorsClass().CatchException(ex);
+                Response.Redirect("/ErrorPage.aspx", false);
             }
         }
     }
