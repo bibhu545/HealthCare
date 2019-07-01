@@ -9,7 +9,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="/css/jquery-ui.min.css" rel="stylesheet" />
-    <link href="/css/Style.css" rel="stylesheet" />
+    <link href="/css/Master-Style.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -52,7 +52,9 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/Vault/ViewDocuments.aspx">View Documents</a></li>
                                 <li><a href="/Vault/ViewDocumentsV2.aspx">View Documents V2</a></li>
+                                <li><a href="/Vault/ViewDocumentsV3.aspx">View Documents V3</a></li>
                                 <li><a href="/Vault/AddNewDocument.aspx">Add New Document</a></li>
+                                <li><a href="/Vault/AddNewDocumentsV2.aspx">Add New Document V2</a></li>
                             </ul>
                         </li>
                         <li><a href="/Profile/ChangePassword.aspx">Change Password</a></li>
@@ -108,62 +110,11 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <link href="/css/jquery-ui.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.btn-danger').click(function (event) {
-                if (!window.confirm('Are you sure?')) {
-                    event.preventDefault();
-                    return false;
-                }
-            });
-            $("#bodyContent_txtIssueDate").datepicker();
-            $("#bodyContent_txtFromDate").datepicker();
-            $("#bodyContent_txtToDate").datepicker();
-        });
-    </script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="/js/Site-Script.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
-    <script>
-
-        // init Isotope
-        var $grid = $('.all-items').isotope({
-            itemSelector: '.item',
-            layoutMode: 'fitRows',
-            getSortData: {
-                filename: '.file-name',
-                filedate: '[data-ticks]'
-            }
-        });
-
-        // bind filter button click
-        $('.filters-button-group').on('click', 'button', function () {
-            var filterValue = $(this).attr('data-filter');
-            $grid.isotope({ filter: filterValue });
-        });
-
-        // bind sort button click
-        $('.sort-button-group').on('click', 'button', function () {
-
-            /* Get the element name to sort */
-            var sortValue = $(this).attr('data-sort-value');
-
-            /* Get the sorting direction: asc||desc */
-            var direction = $(this).attr('data-sort-direction');
-
-            /* convert it to a boolean */
-            var isAscending = (direction == 'asc');
-            var newDirection = (isAscending) ? 'desc' : 'asc';
-
-            /* pass it to isotope */
-            $grid.isotope({ sortBy: sortValue, sortAscending: isAscending });
-
-            $(this).attr('data-sort-direction', newDirection);
-
-            var span = $(this).find('.glyphicon');
-            span.toggleClass('glyphicon-chevron-up glyphicon-chevron-down');
-
-        });
-    </script>
+    <script src="/js/Isotope-Config.js"></script>
 </body>
 </html>

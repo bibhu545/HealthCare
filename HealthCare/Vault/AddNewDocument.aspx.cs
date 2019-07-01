@@ -111,8 +111,10 @@ namespace HealthCare.Vault
                     }
                     else
                     {
-                        file.SaveAs(folder + file.FileName);
-                        allFiles.Add(@"/files/uploads/" + document.UserId + @"/" + file.FileName);
+                        String fileNameToSave = file.FileName.Replace("'", "''");
+                        String randomPrefix = new BusinessClass().RandomAlphaNumericString();
+                        file.SaveAs(folder + randomPrefix + "_" + fileNameToSave);
+                        allFiles.Add(@"/files/uploads/" + document.UserId + @"/" + randomPrefix + "_" + fileNameToSave);
                     }
                 }
 

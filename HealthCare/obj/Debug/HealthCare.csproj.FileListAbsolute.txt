@@ -40,3 +40,5 @@ D:\VisualStudio17\HealthCare\HealthCare\bin\DataModels.pdb
 D:\VisualStudio17\HealthCare\HealthCare\bin\DataAccess.pdb
 D:\VisualStudio17\HealthCare\HealthCare\bin\LogAndErrors.dll
 D:\VisualStudio17\HealthCare\HealthCare\bin\LogAndErrors.pdb
+D:\VisualStudio17\HealthCare\HealthCare\bin\Newtonsoft.Json.dll
+D:\VisualStudio17\HealthCare\HealthCare\bin\Newtonsoft.Json.xml

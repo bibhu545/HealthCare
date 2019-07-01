@@ -51,10 +51,13 @@ namespace DataModels
         public int status = -1;
         public int DocumentId { get; set; }
         public int UserId { get; set; }
+        public String HospitalName { get; set; }
         public int HospitalId { get; set; }
         public int DoctorId { get; set; }
+        public String DoctorName { get; set; }
         public String IssueDate { get; set; }
         public int DocumentType { get; set; }
+        public String DocumentTypeName { get; set; }
         public String Path { get; set; }
         public String UploadDate { get; set; }
     }

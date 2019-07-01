@@ -16,13 +16,32 @@ namespace HealthCare.Vault
     {
         public User user = null;
         public FileData fileData = null;
-        DateTime fromDateTime;
-        DateTime toDateTime;
+        public static DateTime fromDateTime;
+        public static DateTime toDateTime;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                if (!IsPostBack)
+                if(ViewState["status"] != null && Convert.ToInt32(ViewState["status"]) == 1)
+                {
+                    if (Session["loggedUser"] != null)
+                    {
+                        user = (User)Session["loggedUser"];
+                        ViewState["SortDirection"] = "ASC";
+                        ViewState["status"] = 1;
+                        BindFilteredDataGrid();
+                    }
+                    else if (Session["inactiveUser"] != null)
+                    {
+                        user = (User)Session["inactiveUser"];
+                        Response.Redirect("ConfirmRegistration.aspx?errorMessage=Your account is not activated yet.", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("../Login.aspx?errorMessage=You have to login first.", false);
+                    }
+                }
+                else
                 {
                     if (Session["loggedUser"] != null)
                     {
@@ -86,8 +105,16 @@ namespace HealthCare.Vault
         {
             try
             {
-                gvFiles.PageIndex = e.NewPageIndex;
-                BindDataGrid();
+                if (Convert.ToInt32(ViewState["status"]) == 1)
+                {
+                    gvFiles.PageIndex = e.NewPageIndex;
+                    BindFilteredDataGrid();
+                }
+                else
+                {
+                    gvFiles.PageIndex = e.NewPageIndex;
+                    BindDataGrid();
+                }
             }
             catch (Exception ex)
             {
@@ -100,7 +127,14 @@ namespace HealthCare.Vault
         {
             try
             {
-                BindDataGrid(e.SortExpression);
+                if (Convert.ToInt32(ViewState["status"]) == 1)
+                {
+                    BindFilteredDataGrid(e.SortExpression);
+                }
+                else
+                {
+                    BindDataGrid(e.SortExpression);
+                }
             }
             catch (Exception ex)
             {
@@ -177,6 +211,7 @@ namespace HealthCare.Vault
         {
             try
             {
+                ViewState["status"] = 1;
                 String fromDate = txtFromDate.Text.Trim();
                 String toDate = txtToDate.Text.Trim();
                 String[] from = fromDate.Split('/');
@@ -185,13 +220,11 @@ namespace HealthCare.Vault
                 {
                     Response.Redirect("ViewDocumentsV2.aspx?errorMessage=Start and end date combination is not valid.", false);
                 }
-                //else if (from.Length == 3 && to.Length == 3)
-                //{
-                //    if (from[2].Length != 4 || (Convert.ToInt32(from[0]) <= 0 && Convert.ToInt32(from[0]) > 12) || (Convert.ToInt32(from[1]) <= 0 && Convert.ToInt32(from[1]) > 31))
-                //    {
-                //        Response.Redirect("ViewDocumentsV2.aspx?errorMessage=Start and end date combination is not valid.", false);
-                //    }
-                //}
+                else if (from.Length == 3 && to.Length == 3 && from[2].Length != 4 || (Convert.ToInt32(from[0]) <= 0 && Convert.ToInt32(from[0]) > 12) || (Convert.ToInt32(from[1]) <= 0 && Convert.ToInt32(from[1]) > 31))
+                {
+                    Response.Redirect("ViewDocumentsV2.aspx?errorMessage=Start and end date combination is not valid.", false);
+
+                }
                 else
                 {
                     fromDateTime = new DateTime(Convert.ToInt32(from[2]), Convert.ToInt32(from[0]), Convert.ToInt32(from[1]));

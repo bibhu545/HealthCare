@@ -6,8 +6,8 @@
 <head runat="server">
     <title>HealthCare | Register</title>
     <link href="https://fonts.googleapis.com/css?family=Acme|Lobster+Two" rel="stylesheet" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/Style.css" rel="stylesheet" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/Master-Style.css" rel="stylesheet" />
     <style>
         .forms {
             padding-top: 8%;

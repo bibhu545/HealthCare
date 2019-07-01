@@ -47,6 +47,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -72,13 +75,16 @@
     <Content Include="Doctors\EditDoctor.aspx" />
     <Content Include="Doctors\ViewDoctors.aspx" />
     <Content Include="ErrorPage.aspx" />
+    <Content Include="GetFiles.asmx" />
     <Content Include="Hospitals\AddHospital.aspx" />
     <Content Include="Hospitals\DeleteHospital.aspx" />
     <Content Include="Hospitals\EditHospital.aspx" />
     <Content Include="Hospitals\HospitalDetails.aspx" />
     <Content Include="Hospitals\ViewHospitals.aspx" />
     <Content Include="images\ajax-loader.gif" />
+    <Content Include="images\bb8.gif" />
     <Content Include="images\content-bg.jpg" />
+    <Content Include="js\Isotope-Config.js" />
     <Content Include="Profile\ChangePassword.aspx" />
     <Content Include="Profile\ConfirmRegistration.aspx" />
     <Content Include="Profile\EditProfile.aspx" />
@@ -89,7 +95,6 @@
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\Style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Home.aspx" />
     <Content Include="files\profiles\default-profile.png" />
@@ -102,7 +107,7 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\npm.js" />
-    <Content Include="js\Script.js" />
+    <Content Include="js\Site-Script.js" />
     <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <Content Include="css\bootstrap-theme.css.map" />
@@ -114,6 +119,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="SiteMaster.Master" />
+    <Content Include="FileUploadHandler.ashx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -126,10 +132,13 @@
     <Content Include="Global.asax" />
     <Content Include="Register.aspx" />
     <Content Include="Vault\AddNewDocument.aspx" />
+    <Content Include="Vault\AddNewDocumentsV2.aspx" />
     <Content Include="Vault\DeleteDocument.aspx" />
     <Content Include="Vault\Download.aspx" />
+    <Content Include="Vault\InsertFile.aspx" />
     <Content Include="Vault\ViewDocuments.aspx" />
     <Content Include="Vault\ViewDocumentsV2.aspx" />
+    <Content Include="Vault\ViewDocumentsV3.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +183,13 @@
     </Compile>
     <Compile Include="ErrorPage.aspx.designer.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FileUploadHandler.ashx.cs">
+      <DependentUpon>FileUploadHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="GetFiles.asmx.cs">
+      <DependentUpon>GetFiles.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Hospitals\AddHospital.aspx.cs">
       <DependentUpon>AddHospital.aspx</DependentUpon>
@@ -291,6 +307,13 @@
     <Compile Include="Vault\AddNewDocument.aspx.designer.cs">
       <DependentUpon>AddNewDocument.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vault\AddNewDocumentsV2.aspx.cs">
+      <DependentUpon>AddNewDocumentsV2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vault\AddNewDocumentsV2.aspx.designer.cs">
+      <DependentUpon>AddNewDocumentsV2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vault\DeleteDocument.aspx.cs">
       <DependentUpon>DeleteDocument.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -305,6 +328,13 @@
     <Compile Include="Vault\Download.aspx.designer.cs">
       <DependentUpon>Download.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vault\InsertFile.aspx.cs">
+      <DependentUpon>InsertFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vault\InsertFile.aspx.designer.cs">
+      <DependentUpon>InsertFile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vault\ViewDocuments.aspx.cs">
       <DependentUpon>ViewDocuments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -318,6 +348,13 @@
     </Compile>
     <Compile Include="Vault\ViewDocumentsV2.aspx.designer.cs">
       <DependentUpon>ViewDocumentsV2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vault\ViewDocumentsV3.aspx.cs">
+      <DependentUpon>ViewDocumentsV3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vault\ViewDocumentsV3.aspx.designer.cs">
+      <DependentUpon>ViewDocumentsV3.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
