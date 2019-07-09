@@ -168,14 +168,14 @@ namespace DataAccess
             }
             return added;
         }
-        public DataTable GetHospitalsFromDB()
+        public DataTable GetHospitalsFromDB(int userid)
         {
             DataTable dt = null;
             try
             {
                 conn = new SqlConnection(connectionString);
                 conn.Open();
-                SqlCommand scmd = new SqlCommand("select * from hospitals order by isprimary desc", conn);
+                SqlCommand scmd = new SqlCommand("select * from hospitals where userid = " + userid + " order by isprimary desc", conn);
                 SqlDataAdapter sda = new SqlDataAdapter(scmd);
                 dt = new DataTable();
                 sda.Fill(dt);

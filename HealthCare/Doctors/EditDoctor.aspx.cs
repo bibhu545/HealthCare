@@ -51,7 +51,7 @@ namespace HealthCare.Doctors
                                 doctor.IsPrimary = Convert.ToInt32(dt.Rows[0]["isprimary"]);
                                 Session["doctorid"] = doctor.DoctorId;
 
-                                ddlHospitals.DataSource = new BusinessClass().GetHospitals();
+                                ddlHospitals.DataSource = new BusinessClass().GetHospitals(user.UserId);
                                 ddlHospitals.DataTextField = "hospitalname";
                                 ddlHospitals.DataValueField = "hospitalid";
                                 ddlHospitals.DataBind();

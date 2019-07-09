@@ -65,9 +65,9 @@ namespace BusinessLayer
         {
             return new DataAccessClass().AddHospitalToDB(hospital);
         }
-        public DataTable GetHospitals()
+        public DataTable GetHospitals(int userid)
         {
-            return new DataAccessClass().GetHospitalsFromDB();
+            return new DataAccessClass().GetHospitalsFromDB(userid);
         }
         public DataTable GetSpecialities()
         {

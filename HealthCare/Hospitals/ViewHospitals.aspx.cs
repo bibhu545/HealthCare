@@ -100,7 +100,7 @@ namespace HealthCare.Hospitals
             try
             {
                 BusinessClass businessClass = new BusinessClass();
-                DataTable dt = businessClass.GetHospitals();
+                DataTable dt = businessClass.GetHospitals(user.UserId);
                 if (sortExpression != null)
                 {
                     if (ViewState["SortDirection"].ToString() == "ASC")

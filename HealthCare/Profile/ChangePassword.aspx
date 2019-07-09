@@ -28,7 +28,7 @@
                 <%} %>
 
                 <center>
-                    <h3>Change Profile</h3>
+                    <h3>Change Password</h3>
                 </center>
                 <table class="table table-hover cover-details">
                     <tr>

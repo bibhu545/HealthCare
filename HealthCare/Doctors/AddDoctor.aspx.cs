@@ -25,7 +25,7 @@ namespace HealthCare.Doctors
                     {
                         user = (User)Session["loggedUser"];
 
-                        ddlHospitals.DataSource = new BusinessClass().GetHospitals();
+                        ddlHospitals.DataSource = new BusinessClass().GetHospitals(user.UserId);
                         ddlHospitals.DataTextField = "hospitalname";
                         ddlHospitals.DataValueField = "hospitalid";
                         ddlHospitals.DataBind();
